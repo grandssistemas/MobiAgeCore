@@ -3,7 +3,7 @@
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="Bruno Gelatti" id="MAC-1">
+    <changeSet author="rafael (generated)" id="1493923960750-49">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gtag_valu_defi"/>
@@ -11,7 +11,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gtag_valu_defi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-2">
+    <changeSet author="rafael (generated)" id="1493923960750-50">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_ctm_fld"/>
@@ -19,7 +19,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_ctm_fld"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-3">
+    <changeSet author="rafael (generated)" id="1493923960750-51">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_fld_vle"/>
@@ -27,7 +27,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_fld_vle"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-4">
+    <changeSet author="rafael (generated)" id="1493923960750-52">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_glog"/>
@@ -35,7 +35,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_glog"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-5">
+    <changeSet author="rafael (generated)" id="1493923960750-53">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_gtag"/>
@@ -43,7 +43,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_gtag"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-6">
+    <changeSet author="rafael (generated)" id="1493923960750-54">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_gtag_defi"/>
@@ -51,7 +51,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_gtag_defi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-7">
+    <changeSet author="rafael (generated)" id="1493923960750-55">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_gtag_valu"/>
@@ -59,7 +59,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_gtag_valu"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-8">
+    <changeSet author="rafael (generated)" id="1493923960750-56">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_gumga_msg"/>
@@ -67,7 +67,7 @@
         </preConditions>
         <createSequence sequenceName="seq_gumga_msg"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-9">
+    <changeSet author="rafael (generated)" id="1493923960750-57">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seq_guser_gdata"/>
@@ -75,15 +75,7 @@
         </preConditions>
         <createSequence sequenceName="seq_guser_gdata"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-10">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <sequenceExists sequenceName="seq_storage"/>
-            </not>
-        </preConditions>
-        <createSequence sequenceName="seq_storage"/>
-    </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-11">
+    <changeSet author="rafael (generated)" id="1493923960750-118">
         <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="seqrev"/>
@@ -91,7 +83,7 @@
         </preConditions>
         <createSequence sequenceName="seqrev"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-12">
+    <changeSet author="rafael (generated)" id="1493923960750-190">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gtag_vdefi"/>
@@ -108,7 +100,7 @@
             <column name="version" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-13">
+    <changeSet author="rafael (generated)" id="1493923960750-191">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_ctm_fld"/>
@@ -136,7 +128,7 @@
             <column name="visualizationorder" type="FLOAT8"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-14">
+    <changeSet author="rafael (generated)" id="1493923960750-192">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_fld_vle"/>
@@ -155,7 +147,7 @@
             <column name="field_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-15">
+    <changeSet author="rafael (generated)" id="1493923960750-193">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_glog"/>
@@ -178,7 +170,7 @@
             <column name="gumga_software" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-16">
+    <changeSet author="rafael (generated)" id="1493923960750-194">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_gtag"/>
@@ -199,7 +191,7 @@
             <column name="definition_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-17">
+    <changeSet author="rafael (generated)" id="1493923960750-195">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_gtag_defi"/>
@@ -216,7 +208,7 @@
             <column name="version" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-18">
+    <changeSet author="rafael (generated)" id="1493923960750-196">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_gtag_defi_gtag_vdefi"/>
@@ -231,7 +223,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-19">
+    <changeSet author="rafael (generated)" id="1493923960750-197">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_gtag_valu"/>
@@ -250,7 +242,7 @@
             <column name="g_values" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-20">
+    <changeSet author="rafael (generated)" id="1493923960750-198">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumga_msg"/>
@@ -268,7 +260,7 @@
             <column name="visibleon" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-21">
+    <changeSet author="rafael (generated)" id="1493923960750-199">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="gumgarevisionentity"/>
@@ -283,7 +275,7 @@
             <column name="userlogin" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-22">
+    <changeSet author="rafael (generated)" id="1493923960750-200">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="guser_gdata"/>
@@ -300,7 +292,7 @@
             <column name="data_value" type="VARCHAR(4096)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-23">
+    <changeSet author="rafael (generated)" id="1493923960750-317">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="storagefile"/>
@@ -316,26 +308,7 @@
             <column name="url" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-24">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="storagefile_aud"/>
-            </not>
-        </preConditions>
-        <createTable tableName="storagefile_aud">
-            <column name="id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="rev" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="revtype" type="SMALLINT"/>
-            <column name="idstorage" type="BIGINT"/>
-            <column name="type" type="VARCHAR(255)"/>
-            <column name="url" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-25">
+    <changeSet author="rafael (generated)" id="1493923960750-405">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gtag_vdefi"/>
@@ -343,7 +316,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gtag_vdefi_pkey" tableName="gtag_vdefi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-26">
+    <changeSet author="rafael (generated)" id="1493923960750-406">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_ctm_fld"/>
@@ -351,7 +324,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_ctm_fld_pkey" tableName="gumga_ctm_fld"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-27">
+    <changeSet author="rafael (generated)" id="1493923960750-407">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_fld_vle"/>
@@ -359,7 +332,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_fld_vle_pkey" tableName="gumga_fld_vle"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-28">
+    <changeSet author="rafael (generated)" id="1493923960750-408">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_glog"/>
@@ -367,7 +340,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_glog_pkey" tableName="gumga_glog"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-29">
+    <changeSet author="rafael (generated)" id="1493923960750-409">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_gtag_defi"/>
@@ -375,7 +348,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_gtag_defi_pkey" tableName="gumga_gtag_defi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-30">
+    <changeSet author="rafael (generated)" id="1493923960750-410">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_gtag"/>
@@ -383,7 +356,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_gtag_pkey" tableName="gumga_gtag"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-31">
+    <changeSet author="rafael (generated)" id="1493923960750-411">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_gtag_valu"/>
@@ -391,7 +364,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_gtag_valu_pkey" tableName="gumga_gtag_valu"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-32">
+    <changeSet author="rafael (generated)" id="1493923960750-412">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumga_msg"/>
@@ -399,7 +372,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumga_msg_pkey" tableName="gumga_msg"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-33">
+    <changeSet author="rafael (generated)" id="1493923960750-413">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="gumgarevisionentity"/>
@@ -407,7 +380,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="gumgarevisionentity_pkey" tableName="gumgarevisionentity"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-34">
+    <changeSet author="rafael (generated)" id="1493923960750-414">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="guser_gdata"/>
@@ -415,15 +388,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="guser_gdata_pkey" tableName="guser_gdata"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-35">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <primaryKeyExists tableName="storagefile_aud"/>
-            </not>
-        </preConditions>
-        <addPrimaryKey columnNames="id, rev" constraintName="storagefile_aud_pkey" tableName="storagefile_aud"/>
-    </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-36">
+    <changeSet author="rafael (generated)" id="1493923960750-480">
         <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists tableName="storagefile"/>
@@ -431,7 +396,7 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="storagefile_pkey" tableName="storagefile"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-37">
+    <changeSet author="rafael (generated)" id="1493923960750-542">
         <preConditions onFail="MARK_RAN">
             <not>
                 <indexExists indexName="uk_nrn6egicx3rmmdetq0w9jluhm"/>
@@ -439,58 +404,50 @@
         </preConditions>
         <addUniqueConstraint columnNames="attributes_id" constraintName="uk_nrn6egicx3rmmdetq0w9jluhm" tableName="gumga_gtag_defi_gtag_vdefi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-38">
+    <changeSet author="rafael (generated)" id="1493923960750-609">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_5m4hlu5yiqx34fyohd2xs9v2e"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_gtag"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="definition_id" baseTableName="gumga_gtag" constraintName="fk_5m4hlu5yiqx34fyohd2xs9v2e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumga_gtag_defi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-39">
+    <changeSet author="rafael (generated)" id="1493923960750-617">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_657qdk193u11wjv9sr6abaacs"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_fld_vle"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="field_id" baseTableName="gumga_fld_vle" constraintName="fk_657qdk193u11wjv9sr6abaacs" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumga_ctm_fld"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-40">
+    <changeSet author="rafael (generated)" id="1493923960750-634">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_7blcu5kd9ijrtd8u364shgyq8"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_gtag_valu"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="g_values" baseTableName="gumga_gtag_valu" constraintName="fk_7blcu5kd9ijrtd8u364shgyq8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumga_gtag"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-41">
+    <changeSet author="rafael (generated)" id="1493923960750-716">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_fruw3hhib0tetl5erif2owpi6"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_gtag_defi_gtag_vdefi"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="gumga_gtag_defi_id" baseTableName="gumga_gtag_defi_gtag_vdefi" constraintName="fk_fruw3hhib0tetl5erif2owpi6" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumga_gtag_defi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-42">
+    <changeSet author="rafael (generated)" id="1493923960750-799">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_gkx1r4uik06l62x31qch7arwl"/>
-            </not>
-        </preConditions>
-        <addForeignKeyConstraint baseColumnNames="rev" baseTableName="storagefile_aud" constraintName="fk_gkx1r4uik06l62x31qch7arwl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumgarevisionentity"/>
-    </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-43">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_n15r1jcrqi2do3470wjvjdgjv"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_gtag_valu"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="definition_id" baseTableName="gumga_gtag_valu" constraintName="fk_n15r1jcrqi2do3470wjvjdgjv" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gtag_vdefi"/>
     </changeSet>
-    <changeSet author="Bruno Gelatti" id="MAC-44">
+    <changeSet author="rafael (generated)" id="1493923960750-808">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_nrn6egicx3rmmdetq0w9jluhm"/>
+                <foreignKeyConstraintExists foreignKeyName="gumga_gtag_defi_gtag_vdefi"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="attributes_id" baseTableName="gumga_gtag_defi_gtag_vdefi" constraintName="fk_nrn6egicx3rmmdetq0w9jluhm" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gtag_vdefi"/>

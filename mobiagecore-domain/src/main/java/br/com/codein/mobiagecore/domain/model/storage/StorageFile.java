@@ -28,6 +28,20 @@ public class StorageFile extends GumgaModel<Long> {
     @ApiModelProperty(value = "Armazena o ID da imagem no Storage")
     private Long idStorage;
 
+    public StorageFile() {
+    }
+
+    public StorageFile(String url, ImageType type, Long idStorage) {
+        this.url = url;
+        this.type = type;
+        this.idStorage = idStorage;
+    }
+    public StorageFile(StorageFile file) {
+        this.url = file.getUrl();
+        this.type = file.getType();
+        this.idStorage = file.getIdStorage();
+    }
+
     public String getUrl() {
         return url;
     }
