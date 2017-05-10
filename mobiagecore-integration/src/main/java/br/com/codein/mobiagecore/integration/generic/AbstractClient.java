@@ -1,7 +1,6 @@
 package br.com.codein.mobiagecore.integration.generic;
 
 import io.gumga.core.GumgaThreadScope;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
@@ -54,5 +53,17 @@ public abstract class AbstractClient<T>{
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, objectClass);
+    }
+
+    protected ResponseEntity<T> postFile(String url, File file) {
+        this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        this.headers.set("gumgaToken", "6L6E1585786063159O6.I");
+        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        Resource resource = new FileSystemResource(file);
+        map.add("file", resource);
+        HttpEntity<LinkedMultiValueMap<String, Object>> requestEntity = new    HttpEntity<LinkedMultiValueMap<String, Object>>(
+                map, headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) requestEntity, objectClass);
     }
 }
