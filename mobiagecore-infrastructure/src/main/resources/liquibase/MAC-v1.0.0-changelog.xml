@@ -75,6 +75,14 @@
         </preConditions>
         <createSequence sequenceName="seq_guser_gdata"/>
     </changeSet>
+    <changeSet author="rafael (generated)" id="1493923960750-118">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="seqrev"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="seqrev"/>
+    </changeSet>
     <changeSet author="rafael (generated)" id="1493923960750-190">
         <preConditions onFail="MARK_RAN">
             <not>
