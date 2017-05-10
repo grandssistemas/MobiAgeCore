@@ -36,6 +36,6 @@
                 <foreignKeyConstraintExists foreignKeyName="fk_gkx1r4uik06l62x31qch7arwl"/>
             </not>
         </preConditions>
-        <addForeignKeyConstraint baseColumnNames="rev" baseTableName="storagefile_aud" constraintName="fk_gkx1r4uik06l62x31qch7arwl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumgarevisionentity" referencedTableSchemaName="limpo"/>
+        <addForeignKeyConstraint baseColumnNames="rev" baseTableName="storagefile_aud" constraintName="fk_gkx1r4uik06l62x31qch7arwl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumgarevisionentity" referencedTableSchemaName="${referenced.name}"/>
     </changeSet>
 </databaseChangeLog>
