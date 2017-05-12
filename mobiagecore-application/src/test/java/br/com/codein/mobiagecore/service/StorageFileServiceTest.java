@@ -28,9 +28,9 @@ public class StorageFileServiceTest extends AbstractTest {
     }
 
 //    @Test
-//    public void testSaveSharedFile() {
-//        File file = new File("/home/gelatti/Imagens/logo.png");
-//        StorageFile sf = storageFileService.saveSharedImage(file, "07110945000105");
-//        Assert.assertNotNull(sf);
-//    }
+    public void testSaveSharedFile() {
+        File file = new File("/home/gelatti/Imagens/logo.png");
+        StorageFile sf = storageFileService.saveSharedImage(file, "07110945000105");
+        Assert.assertNotNull(sf);
+    }
 }

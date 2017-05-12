@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by gelatti on 10/05/17.
@@ -15,24 +16,23 @@ import java.util.Map;
 @Component
 public class StorageClient extends AbstractClient<Map> {
 
-    //    private GumgaValues gumgaValues;
-//
-//    private Properties properties;
+    private GumgaValues gumgaValues;
+
+    private Properties properties;
 
     @Autowired
     public StorageClient(GumgaValues gumgaValues) {
         super();
-//        this.gumgaValues = gumgaValues;
-//        this.url = getProperties().getProperty("storage.url");
-        this.url = "http://localhost:8084/storage-api";
+        this.gumgaValues = gumgaValues;
+        this.url = getProperties().getProperty("storage.url");
     }
 
-//    private Properties getProperties() {
-//        if(properties == null)
-//            properties = gumgaValues.getCustomFileProperties();
-//
-//        return properties;
-//    }
+    private Properties getProperties() {
+        if(properties == null)
+            properties = gumgaValues.getCustomFileProperties();
+
+        return properties;
+    }
 
     public ResponseEntity<Map> uploadSharedImage(File file, String key) {
         String url = "/api/arquivos/upload/imagem-compartilhada/containers/" + key;
