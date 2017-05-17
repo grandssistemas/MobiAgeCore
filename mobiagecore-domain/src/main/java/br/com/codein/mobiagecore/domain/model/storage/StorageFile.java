@@ -25,8 +25,10 @@ public class StorageFile extends GumgaModel<Long> {
     @Enumerated(EnumType.STRING)
     @ApiModelProperty(value = "Atributo que diz se a imagem é primaria ou secundaria", position = 2)
     private ImageType type;
-    @ApiModelProperty(value = "Armazena o ID da imagem no Storage")
+    @ApiModelProperty(value = "Armazena o ID da imagem no Storage", position = 3)
     private Long idStorage;
+    @ApiModelProperty(value = "ID usado para integração com outros softwares", position = 4)
+    private Long integrationId;
 
     public StorageFile() {
     }
@@ -64,5 +66,13 @@ public class StorageFile extends GumgaModel<Long> {
 
     public void setIdStorage(Long idStorage) {
         this.idStorage = idStorage;
+    }
+
+    public Long getIntegrationId() {
+        return integrationId;
+    }
+
+    public void setIntegrationId(Long integrationId) {
+        this.integrationId = integrationId;
     }
 }
