@@ -1,6 +1,7 @@
 package br.com.codein.mobiagecore.utils;
 
 import br.com.codein.mobiagecore.AbstractTest;
+import br.com.codein.mobiagecore.domain.utils.ObjectUtils;
 import br.com.codein.mobiagecore.domain.utils.StringUtils;
 import org.junit.Test;
 
@@ -60,7 +61,7 @@ public class StringUtilsTest extends AbstractTest {
     public void testCoalesce() {
         Object obj1 = null;
         Object obj2 = new Object();
-        Object objTest = StringUtils.coalesce(obj1, obj2);
+        Object objTest = ObjectUtils.coalesce(obj1, obj2);
         assertEquals(obj2, objTest);
     }
 }

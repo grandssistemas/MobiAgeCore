@@ -46,7 +46,5 @@ public class StringUtils {
         return Arrays.stream(strings).filter(str -> !org.apache.commons.lang3.StringUtils.isBlank(str)).findFirst().get();
     }
 
-    public static <T> T coalesce(T ...items){
-        return Arrays.stream(items).filter(Objects::nonNull).findFirst().get();
-    }
+
 }
