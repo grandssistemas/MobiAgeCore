@@ -3,6 +3,7 @@ package br.com.codein.mobiagecore.service;
 import br.com.codein.mobiagecore.AbstractTest;
 import br.com.codein.mobiagecore.application.service.storage.StorageFileService;
 import br.com.codein.mobiagecore.domain.model.storage.StorageFile;
+import br.com.codein.mobiagecore.domain.utils.StringUtils;
 import io.gumga.core.QueryObject;
 import io.gumga.core.SearchResult;
 import org.junit.Assert;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -28,9 +30,9 @@ public class StorageFileServiceTest extends AbstractTest {
     }
 
 //    @Test
-//    public void testSaveSharedFile() {
-//        File file = new File("/home/gelatti/Imagens/logo.png");
-//        StorageFile sf = storageFileService.saveSharedImage(file, "07110945000105");
-//        Assert.assertNotNull(sf);
-//    }
+    public void testSaveSharedFile() {
+        File file = new File("/home/gelatti/Imagens/logo.png");
+        StorageFile sf = storageFileService.saveSharedImage(file, "07110945000105");
+        Assert.assertNotNull(sf);
+    }
 }

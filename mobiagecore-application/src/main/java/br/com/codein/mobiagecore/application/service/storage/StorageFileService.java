@@ -33,7 +33,8 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
     public StorageFile saveSharedImage (File file, String key) {
         StorageFile sf = new StorageFile();
         Map map = storageClient.uploadSharedImage(file, key).getBody();
-        sf.setUrl(String.valueOf(map.get("link")));
+        sf.setUrl(String.valueOf(((Map)map.get("object")).get("localizacaoStorage")));
+        sf.setIdStorage(Long.valueOf(String.valueOf(((Map)map.get("object")).get("id"))));
         return sf;
     }
 }
