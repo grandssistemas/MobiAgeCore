@@ -46,5 +46,13 @@ public class StringUtils {
         return Arrays.stream(strings).filter(str -> !org.apache.commons.lang3.StringUtils.isBlank(str)).findFirst().get();
     }
 
+    public static Boolean isInteger(String string){
+        try {
+            Integer.parseInt(string);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
 
 }
