@@ -22,6 +22,8 @@ public class DateUtils {
             return parser.parse(date);
         } catch (ParseException e) {
             throw new ValidationException("Invalid date.");
+        } catch (NullPointerException e){
+            return null;
         }
     }
 
