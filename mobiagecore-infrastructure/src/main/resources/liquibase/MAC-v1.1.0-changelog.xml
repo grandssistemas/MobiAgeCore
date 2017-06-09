@@ -3,49 +3,37 @@
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="rafael (generated)" id="1493923960750-49">
+    <changeSet author="Bruno Gelatti" id="MAC-1">
         <preConditions onFail="MARK_RAN">
             <not>
-                <sequenceExists sequenceName="seq_gtag_valu_defi"/>
+                <sequenceExists sequenceName="seq_dashboard"/>
             </not>
         </preConditions>
-        <createSequence sequenceName="seq_gtag_valu_defi"/>
+        <createSequence sequenceName="seq_dashboard"/>
     </changeSet>
-    <changeSet author="rafael (generated)" id="1493923960750-191">
+    <changeSet author="Bruno Gelatti" id="MAC-2">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="gumga_ctm_fld"/>
+                <tableExists tableName="dashboard"/>
             </not>
         </preConditions>
-        <createTable tableName="gumga_ctm_fld">
+        <createTable tableName="dashboard">
             <column name="id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="oi" type="VARCHAR(255)"/>
             <column name="active" type="BOOLEAN"/>
-            <column name="clazz" type="VARCHAR(255)"/>
-            <column name="defaultvaluescript" type="VARCHAR(255)"/>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="fieldgroup" type="VARCHAR(255)"/>
-            <column name="name" type="VARCHAR(255)"/>
-            <column name="optionlabelfield" type="VARCHAR(255)"/>
-            <column name="optionvaluefield" type="VARCHAR(255)"/>
-            <column name="options" type="VARCHAR(255)"/>
-            <column name="optionscollection" type="VARCHAR(255)"/>
-            <column name="translatekey" type="VARCHAR(255)"/>
-            <column name="type" type="VARCHAR(255)"/>
-            <column name="validationdescription" type="VARCHAR(255)"/>
-            <column name="validationscript" type="VARCHAR(255)"/>
-            <column name="visualizationorder" type="FLOAT8"/>
+            <column name="linkdashboard" type="VARCHAR(255)"/>
+            <column name="dashboardtype" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="rafael (generated)" id="1493923960750-412">
+    <changeSet author="Bruno Gelatti" id="MAC-3">
         <preConditions onFail="MARK_RAN">
             <not>
-                <primaryKeyExists tableName="gumga_msg"/>
+                <primaryKeyExists tableName="dashboard"/>
             </not>
         </preConditions>
-        <addPrimaryKey columnNames="id" constraintName="gumga_msg_pkey" tableName="gumga_msg"/>
+        <addPrimaryKey columnNames="id" constraintName="dashboard_pk" tableName="dashboard"/>
     </changeSet>
 
 </databaseChangeLog>
