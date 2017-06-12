@@ -25,6 +25,8 @@
             <column name="active" type="BOOLEAN"/>
             <column name="linkdashboard" type="VARCHAR(255)"/>
             <column name="dashboardtype" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="version" type="INT"/>
         </createTable>
     </changeSet>
     <changeSet author="Bruno Gelatti" id="MAC-3">

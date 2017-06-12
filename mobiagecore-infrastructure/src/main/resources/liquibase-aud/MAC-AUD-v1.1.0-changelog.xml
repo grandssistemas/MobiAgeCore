@@ -20,6 +20,7 @@
             <column name="active" type="BOOLEAN"/>
             <column name="linkdashboard" type="VARCHAR(255)"/>
             <column name="dashboardtype" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="rafael (generated)" id="1493924206514-403">

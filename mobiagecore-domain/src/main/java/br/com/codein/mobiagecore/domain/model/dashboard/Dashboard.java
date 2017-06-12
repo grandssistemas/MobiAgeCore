@@ -27,6 +27,8 @@ public class Dashboard extends GumgaModel<Long> {
     @Enumerated(EnumType.STRING)
     @ApiModelProperty(value = "Define em qual tela será aberto o dashboard", position = 2)
     private DashboardType dashboardType;
+    @ApiModelProperty(value = "Nome para a apresentação salva", position = 0)
+    private String name;
 
     public Integer getVersion() {
         return version;
@@ -58,5 +60,13 @@ public class Dashboard extends GumgaModel<Long> {
 
     public void setDashboardType(DashboardType dashboardType) {
         this.dashboardType = dashboardType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
