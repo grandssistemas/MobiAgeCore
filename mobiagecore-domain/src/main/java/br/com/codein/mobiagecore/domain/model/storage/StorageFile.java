@@ -6,10 +6,7 @@ import io.gumga.domain.GumgaMultitenancy;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 /**
  * Created by gelatti on 03/05/17.
@@ -18,6 +15,9 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_STORAGE")
 @Audited
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"oi", "integrationid"}, name = "integration_unique_storagefile"),
+})
 public class StorageFile extends GumgaModel<Long> {
 
     @ApiModelProperty(value = "Url do arquivo salvo no Storage", position = 1)

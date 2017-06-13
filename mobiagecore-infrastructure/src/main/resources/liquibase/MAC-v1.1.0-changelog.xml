@@ -37,5 +37,23 @@
         </preConditions>
         <addPrimaryKey columnNames="id" constraintName="dashboard_pk" tableName="dashboard"/>
     </changeSet>
+    <changeSet author="Bruno Gelatti" id="MAC-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="storagefile" columnName="integrationid"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="storagefile">
+            <column name="integrationid" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Bruno Gelatti" id="MAC-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="integration_unique_storagefile"/>
+            </not>
+        </preConditions>
+        <addUniqueConstraint columnNames="oi, integrationid" constraintName="integration_unique_storagefile" tableName="storagefile"/>
+    </changeSet>
 
 </databaseChangeLog>
