@@ -39,4 +39,14 @@
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="rev" baseTableName="dashboard_aud" constraintName="fk_dashboard_aud" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="gumgarevisionentity" referencedTableSchemaName="${referenced.name}"/>
     </changeSet>
+    <changeSet author="Bruno Gelatti" id="MAC-AUD-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="storagefile_aud" columnName="integrationid"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="storagefile_aud">
+            <column name="integrationid" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

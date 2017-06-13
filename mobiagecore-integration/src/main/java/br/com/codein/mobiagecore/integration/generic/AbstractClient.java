@@ -66,4 +66,15 @@ public abstract class AbstractClient<T>{
                 map, headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) requestEntity, objectClass);
     }
+
+    protected ResponseEntity<T> delete(String url, Object object) {
+        this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(object, this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.DELETE, (HttpEntity<?>) this.requestEntity, objectClass);
+    }
 }
