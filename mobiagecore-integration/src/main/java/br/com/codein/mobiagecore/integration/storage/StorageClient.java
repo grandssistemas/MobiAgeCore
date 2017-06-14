@@ -19,24 +19,23 @@ import java.util.Properties;
 @Component
 public class StorageClient extends AbstractClient<Map> {
 
-//    private GumgaValues gumgaValues;
-//
-//    private Properties properties;
+    private GumgaValues gumgaValues;
+
+    private Properties properties;
 
     @Autowired
     public StorageClient(GumgaValues gumgaValues) {
         super();
-//        this.gumgaValues = gumgaValues;
-//        this.url = getProperties().getProperty("storage.url");
-        this.url = "http://localhost:8084/storage-api";
+        this.gumgaValues = gumgaValues;
+        this.url = getProperties().getProperty("storage.url");
     }
 
-//    private Properties getProperties() {
-//        if(properties == null)
-//            properties = gumgaValues.getCustomFileProperties();
-//
-//        return properties;
-//    }
+    private Properties getProperties() {
+        if(properties == null)
+            properties = gumgaValues.getCustomFileProperties();
+
+        return properties;
+    }
 
     public ResponseEntity<Map> uploadSharedImage(File file, String key) {
         String url = "/api/arquivos/upload/imagem-compartilhada/containers/" + key;
