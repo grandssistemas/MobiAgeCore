@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 
@@ -17,27 +19,33 @@ import java.util.Properties;
 @Component
 public class StorageClient extends AbstractClient<Map> {
 
-    private GumgaValues gumgaValues;
-
-    private Properties properties;
+//    private GumgaValues gumgaValues;
+//
+//    private Properties properties;
 
     @Autowired
     public StorageClient(GumgaValues gumgaValues) {
         super();
-        this.gumgaValues = gumgaValues;
-        this.url = getProperties().getProperty("storage.url");
+//        this.gumgaValues = gumgaValues;
+//        this.url = getProperties().getProperty("storage.url");
+        this.url = "http://localhost:8084/storage-api";
     }
 
-    private Properties getProperties() {
-        if(properties == null)
-            properties = gumgaValues.getCustomFileProperties();
-
-        return properties;
-    }
+//    private Properties getProperties() {
+//        if(properties == null)
+//            properties = gumgaValues.getCustomFileProperties();
+//
+//        return properties;
+//    }
 
     public ResponseEntity<Map> uploadSharedImage(File file, String key) {
         String url = "/api/arquivos/upload/imagem-compartilhada/containers/" + key;
         return super.postFile(url, file);
+    }
+
+    public ResponseEntity<Map> uploadFile(File file, String key) throws IOException {
+        String url = "/api/arquivos/upload/documento-fiscal-eletronico/containers/" + key;
+        return super.postXml(url, file);
     }
 
     public ResponseEntity<Map> uploadImage(File file, String key) {
