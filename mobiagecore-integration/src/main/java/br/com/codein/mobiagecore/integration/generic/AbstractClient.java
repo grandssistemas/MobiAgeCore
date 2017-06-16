@@ -77,7 +77,7 @@ public abstract class AbstractClient<T>{
     protected ResponseEntity<T> postXml(String url, File file) {
         this.restTemplate = new RestTemplate();
         this.headers = new HttpHeaders();
-        this.headers.set("gumgaToken", "eternoGrands");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         Resource resource = new FileSystemResource(file);
         map.add("file", resource);
