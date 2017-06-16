@@ -1,6 +1,7 @@
 package br.com.codein.mobiagecore.domain.utils;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
@@ -43,7 +44,11 @@ public class StringUtils {
     }
 
     public static String coalesceNotBlankString(String ...strings){
-        return Arrays.stream(strings).filter(str -> !org.apache.commons.lang3.StringUtils.isBlank(str)).findFirst().get();
+        try {
+            return Arrays.stream(strings).filter(str -> !org.apache.commons.lang3.StringUtils.isBlank(str)).findFirst().get();
+        } catch (NoSuchElementException ex) {
+            return null;
+        }
     }
 
     public static Boolean isInteger(String string){
@@ -53,6 +58,10 @@ public class StringUtils {
             return false;
         }
         return true;
+    }
+
+    public static Boolean isBlank(String str) {
+        return org.apache.commons.lang3.StringUtils.isBlank(str);
     }
 
 }
