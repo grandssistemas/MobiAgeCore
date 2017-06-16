@@ -10,7 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.File;
+import javax.activation.FileTypeMap;
+import javax.activation.MimetypesFileTypeMap;
+import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,6 +35,13 @@ public class StorageFileServiceTest extends AbstractTest {
     public void testSaveSharedFile() {
         File file = new File("/home/gelatti/Imagens/logo.png");
         StorageFile sf = storageFileService.saveSharedImage(file, "07110945000105");
+        Assert.assertNotNull(sf);
+    }
+
+//    @Test
+    public void testSaveXmlFile() throws IOException {
+        File file = new File("/home/gelatti/xmlteste.xml");
+        StorageFile sf = storageFileService.saveXml(file, "07110945000105");
         Assert.assertNotNull(sf);
     }
 }
