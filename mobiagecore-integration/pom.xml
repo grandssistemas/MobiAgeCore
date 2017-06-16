@@ -31,6 +31,12 @@
             <groupId>io.gumga</groupId>
             <artifactId>gumga-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>br.com.grands</groupId>
+            <artifactId>financeclient</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 
