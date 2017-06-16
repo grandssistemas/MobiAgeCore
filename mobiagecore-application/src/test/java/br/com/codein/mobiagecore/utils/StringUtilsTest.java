@@ -53,5 +53,23 @@ public class StringUtilsTest extends AbstractTest {
         assertEquals("test", test);
     }
 
+    @Test
+    public void testCoalesceNotBlankStringWithAllBlank() {
+        String test = StringUtils.coalesceNotBlankString("", "", "");
+        assertEquals(null, test);
+    }
+
+    @Test
+    public void testIsBlankBlank() {
+        Boolean test = StringUtils.isBlank("");
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void testIsBlankNotBlank() {
+        Boolean test = StringUtils.isBlank("test");
+        assertEquals(false, test);
+    }
+
 
 }
