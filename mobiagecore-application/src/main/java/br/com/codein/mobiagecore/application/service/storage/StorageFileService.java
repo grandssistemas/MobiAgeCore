@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +44,20 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
         sf.setType(ImageType.PRIMARY);
         save(sf);
         return sf;
+    }
+
+    @Transactional
+    public StorageFile saveXml (File file, String key) throws IOException {
+        Map map = storageClient.uploadFile(file, key).getBody();
+        if (((ArrayList)map.get("arquivos")).size() > 0) {
+            StorageFile sf = new StorageFile();
+            sf.setUrl(String.valueOf(((Map) map.get("object")).get("localizacaoStorage")));
+            sf.setIdStorage(Long.valueOf(String.valueOf(((Map) map.get("object")).get("id"))));
+            save(sf);
+            return sf;
+        } else {
+            return null;
+        }
     }
 
     @Transactional
