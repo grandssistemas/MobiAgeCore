@@ -1,15 +1,22 @@
 package br.com.codein.mobiagecore.integration.generic;
 
 import io.gumga.core.GumgaThreadScope;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,8 +69,30 @@ public abstract class AbstractClient<T>{
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         Resource resource = new FileSystemResource(file);
         map.add("file", resource);
-        HttpEntity<LinkedMultiValueMap<String, Object>> requestEntity = new    HttpEntity<LinkedMultiValueMap<String, Object>>(
+        HttpEntity<LinkedMultiValueMap<String, Object>> requestEntity = new HttpEntity<LinkedMultiValueMap<String, Object>>(
                 map, headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) requestEntity, objectClass);
+    }
+
+    protected ResponseEntity<T> postXml(String url, File file) {
+        this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        Resource resource = new FileSystemResource(file);
+        map.add("file", resource);
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(map, headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, requestEntity, objectClass);
+    }
+
+    protected ResponseEntity<T> delete(String url, Object object) {
+        this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(object, this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.DELETE, (HttpEntity<?>) this.requestEntity, objectClass);
     }
 }

@@ -6,10 +6,7 @@ import io.gumga.domain.GumgaMultitenancy;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 /**
  * Created by gelatti on 03/05/17.
@@ -18,6 +15,9 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_STORAGE")
 @Audited
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"oi", "integrationid"}, name = "integration_unique_storagefile"),
+})
 public class StorageFile extends GumgaModel<Long> {
 
     @ApiModelProperty(value = "Url do arquivo salvo no Storage", position = 1)
@@ -25,8 +25,10 @@ public class StorageFile extends GumgaModel<Long> {
     @Enumerated(EnumType.STRING)
     @ApiModelProperty(value = "Atributo que diz se a imagem é primaria ou secundaria", position = 2)
     private ImageType type;
-    @ApiModelProperty(value = "Armazena o ID da imagem no Storage")
+    @ApiModelProperty(value = "Armazena o ID da imagem no Storage", position = 3)
     private Long idStorage;
+    @ApiModelProperty(value = "ID usado para integração com outros softwares", position = 4)
+    private Long integrationId;
 
     public StorageFile() {
     }
@@ -64,5 +66,13 @@ public class StorageFile extends GumgaModel<Long> {
 
     public void setIdStorage(Long idStorage) {
         this.idStorage = idStorage;
+    }
+
+    public Long getIntegrationId() {
+        return integrationId;
+    }
+
+    public void setIntegrationId(Long integrationId) {
+        this.integrationId = integrationId;
     }
 }
