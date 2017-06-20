@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">                                                                          <!-- GUMGA RULES FM2017  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">                                                                          <!-- GUMGA RULES FM2017  -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.codein</groupId>
     <artifactId>mobiagecore</artifactId>
@@ -248,13 +249,57 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <extensions>
+
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </extension>
+        </extensions>
     </build>
-  <modules>
-      <module>mobiagecore-domain</module>
-      <module>mobiagecore-infrastructure</module>
-      <module>mobiagecore-application</module>
-      <module>mobiagecore-gateway</module>
-      <module>mobiagecore-api</module>
-      <module>mobiagecore-integration</module>
-  </modules>
+    <modules>
+        <module>mobiagecore-domain</module>
+        <module>mobiagecore-infrastructure</module>
+        <module>mobiagecore-application</module>
+        <module>mobiagecore-gateway</module>
+        <module>mobiagecore-api</module>
+        <module>mobiagecore-integration</module>
+    </modules>
+    <repositories>
+        <repository>
+            <id>maven-s3-release-repo</id>
+            <name>S3 Release Repository for component1</name>
+            <url>s3://repository.mobiage/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-s3-snapshot-repo</id>
+            <name>Component1-s3-snapshot-repo</name>
+            <url>s3://repository.mobiage/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>maven-s3-release-repo</id>
+            <name>AWS Release Repository</name>
+            <url>s3://repository.mobiage/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-s3-snapshot-repo</id>
+            <name>AWS Snapshot Repository</name>
+            <url>s3://repository.mobiage/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
