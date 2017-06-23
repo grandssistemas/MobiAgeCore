@@ -41,6 +41,10 @@
             <artifactId>financeclient</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>io.gumga</groupId>
+            <artifactId>gumga-presentation</artifactId>
+        </dependency>
     </dependencies>
 
 

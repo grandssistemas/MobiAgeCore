@@ -2,6 +2,7 @@ package br.com.codein.mobiagecore.integration.generic;
 
 import io.gumga.core.GumgaThreadScope;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
@@ -23,7 +24,7 @@ import java.util.Map;
  * Created by gelatti on 03/05/17.
  */
 @Component
-public abstract class AbstractClient<T>{
+public abstract class AbstractClient<T> {
 
     private final Class<T> objectClass;
     private HttpHeaders headers;
@@ -31,7 +32,7 @@ public abstract class AbstractClient<T>{
     private HttpEntity requestEntity;
     protected String url;
 
-    public AbstractClient(){
+    public AbstractClient() {
         this.objectClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
@@ -49,6 +50,28 @@ public abstract class AbstractClient<T>{
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(this.headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, objectClass, stringObjectMap);
+    }
+
+    protected ResponseEntity<T> get(String url) {
+        return this.get(url, new HashMap<>());
+    }
+
+    protected ResponseEntity<List<T>> getList(String url) {
+        return this.getList(url, new HashMap<>());
+    }
+
+
+    protected ResponseEntity<List<T>> getList(String url, Map<String, Object> stringObjectMap) {
+        this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(this.headers);
+        ParameterizedTypeReference<List<T>> typeRef = new ParameterizedTypeReference<List<T>>() {
+        };
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, typeRef, stringObjectMap);
     }
 
     protected ResponseEntity<T> post(String url, Object object) {
