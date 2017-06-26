@@ -2,5 +2,45 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="nakamura" id="MAC-AUD-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="marking_aud"/>
+            </not>
+        </preConditions>
+        <createTable tableName="marking_aud">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="oi" type="VARCHAR(255)"/>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="origin" type="VARCHAR(255)"/>
+            <column name="version" type="INT"/>
+            <column name="rev" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="revtype" type="SMALLINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="MAC-AUD-3" author="nakamura">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists tableName="marking_aud" primaryKeyName="marking_aud_pk"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey tableName="marking_aud" columnNames="id, rev" constraintName="marking_aud_pk"/>
+    </changeSet>
 
+    <changeSet id="MAC-AUD-4" author="nakamura">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="marking_gumgarevisionentity_fk"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="rev" baseTableName="marking_aud"
+                                 constraintName="marking_gumgarevisionentity_fk" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="gumgarevisionentity"
+                                 referencedTableSchemaName="${referenced.name}"/>
+    </changeSet>
 </databaseChangeLog>
