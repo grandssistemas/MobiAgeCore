@@ -14,4 +14,8 @@ public class ObjectUtils {
     public static <T> T coalesceArray(Collection<T> collection){
         return collection.stream().filter(Objects::nonNull).findFirst().orElse(null);
     }
+
+    public static <T> Boolean allNull(T ...items){
+        return Arrays.stream(items).allMatch(Objects::isNull);
+    }
 }
