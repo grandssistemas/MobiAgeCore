@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet author="Bruno Gelatti" id="MAC-9">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="seq_genericreport"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="seq_genericreport"/>
+    </changeSet>
+    <changeSet author="Bruno Gelatti" id="MAC-10">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="genericreport"/>
+            </not>
+        </preConditions>
+        <createTable tableName="genericreport">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="oi" type="VARCHAR(255)"/>
+            <column name="jsonreport" type="TEXT"/>
+            <column name="reporttype" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Bruno Gelatti" id="MAC-11">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists tableName="genericreport"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey columnNames="id" constraintName="genericreport_pkey" tableName="genericreport"/>
+    </changeSet>
+</databaseChangeLog>
