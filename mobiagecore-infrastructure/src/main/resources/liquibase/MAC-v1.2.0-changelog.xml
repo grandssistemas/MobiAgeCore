@@ -5,7 +5,7 @@
 
 
     <changeSet id="MAC-6" author="Luiz Augusto" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <sequenceExists sequenceName="seq_person_marking"/>
         </preConditions>
         <renameSequence oldSequenceName="seq_person_marking" newSequenceName="seq_marking"/>
