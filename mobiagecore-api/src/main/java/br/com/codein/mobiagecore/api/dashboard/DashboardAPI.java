@@ -1,4 +1,4 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.dashboard;
 
 import br.com.codein.mobiagecore.domain.model.dashboard.Dashboard;
 import br.com.codein.mobiagecore.gateway.dto.DashboardTypeDTO;
