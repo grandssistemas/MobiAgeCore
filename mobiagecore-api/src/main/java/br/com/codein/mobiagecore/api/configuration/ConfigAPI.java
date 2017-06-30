@@ -1,4 +1,4 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.configuration;
 
 import br.com.codein.mobiagecore.application.component.ApplicationConf;
 import org.springframework.beans.factory.annotation.Autowired;

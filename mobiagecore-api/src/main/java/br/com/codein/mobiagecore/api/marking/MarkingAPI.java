@@ -1,4 +1,4 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.marking;
 
 
 import br.com.codein.mobiagecore.application.service.marking.MarkingService;

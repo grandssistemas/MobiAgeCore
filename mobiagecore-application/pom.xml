@@ -43,11 +43,15 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>br.com.grands</groupId>
             <artifactId>financeclient</artifactId>
             <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stimulsoft</groupId>
+            <artifactId>stimulsoft-reports-base</artifactId>
+            <version>2017.1.4</version>
         </dependency>
     </dependencies>
 </project>

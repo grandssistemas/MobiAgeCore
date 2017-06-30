@@ -1,4 +1,4 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.integration;
 
 import br.com.codein.mobiagecore.application.service.finance.FinanceIntegrationService;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
