@@ -10,7 +10,8 @@ public enum ReportType {
     SALE("Venda"),
     CONSIGMENT("Consignado"),
     FISCAL("Fiscal"),
-    HEADERFOOTER("Cabeçalho e Rodapé");
+    HEADERFOOTER("Cabeçalho e Rodapé"),
+    CASHCHECKOUT("Fechamento de Caixa");
 
     private final String label;
 
