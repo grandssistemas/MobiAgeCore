@@ -2,7 +2,6 @@ package br.com.codein.mobiagecore.gateway.dto;
 
 
 import br.com.codein.mobiagecore.domain.model.genericreport.enums.ReportType;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

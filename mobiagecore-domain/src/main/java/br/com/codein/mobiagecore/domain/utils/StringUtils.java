@@ -2,7 +2,6 @@ package br.com.codein.mobiagecore.domain.utils;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 /**
  * Created by gelatti on 26/05/17.
