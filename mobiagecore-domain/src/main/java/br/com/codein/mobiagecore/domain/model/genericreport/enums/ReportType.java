@@ -11,7 +11,8 @@ public enum ReportType {
     CONSIGMENT("Consignado"),
     FISCAL("Fiscal"),
     HEADERFOOTER("Cabeçalho e Rodapé"),
-    TAG("Etiqueta");
+    TAG("Etiqueta"),
+    CASHCHECKOUT("Fechamento de Caixa");
 
     private final String label;
 
