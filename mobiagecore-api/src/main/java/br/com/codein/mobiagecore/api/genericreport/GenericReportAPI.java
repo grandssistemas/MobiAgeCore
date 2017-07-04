@@ -28,7 +28,7 @@ public class GenericReportAPI extends GumgaAPI<GenericReport, Long> {
     public List<ReportTypeDTO> getReportType() {
         List<ReportTypeDTO> reportTypeDTOS = new ArrayList<>();
         for (ReportTypeDTO dto : ReportTypeDTO.getValues()) {
-            if (!dto.getKey().equals("HEADERFOOTER")) {
+            if (!dto.getKey().equals("HEADERFOOTER") && !dto.getKey().equals("CASHCLOSE")) {
                 reportTypeDTOS.add(dto);
             }
         }
