@@ -17,3 +17,4 @@ build/
 nbbuild/
 dist/
 nbdist/
+**/*.xml.versionsBackup
