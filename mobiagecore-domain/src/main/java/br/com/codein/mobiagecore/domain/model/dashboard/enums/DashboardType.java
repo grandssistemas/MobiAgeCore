@@ -8,7 +8,8 @@ public enum DashboardType {
     SALE("Venda"),
     EXCHANGE("Troca"),
     CONSIGNMENT("Consignado"),
-    CASHCHECKOUT("Fechamento de Caixa");
+    CASHCHECKOUT("Fechamento de Caixa"),
+    MOVEMENTSTOCK("Movimentação de Estoque");
 
     private final String label;
 
