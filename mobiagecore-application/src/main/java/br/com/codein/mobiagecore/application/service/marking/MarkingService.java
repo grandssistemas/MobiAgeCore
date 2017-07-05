@@ -31,11 +31,19 @@ public class MarkingService extends GumgaService<Marking, Long> {
     public List<Marking> findByOrigin(String origin) {
         QueryObject query = new QueryObject();
         query.setAq(String.format("obj.origin = '%s' ", origin));
+        query.setPageSize(Integer.MAX_VALUE);
         SearchResult<Marking> result = this.repository.search(query);
         return result.getValues();
     }
 
-    ;
+
+    @Transactional(readOnly = true)
+    public List<Marking> findByOriginAndValue(String origin, String value) {
+        QueryObject query = new QueryObject();
+        query.setAq(String.format("obj.origin = '%s' and lower(obj.value) like '%%%s%%'", origin,value.toLowerCase()));
+        SearchResult<Marking> result = this.repository.search(query);
+        return result.getValues();
+    }
 
     @Transactional(readOnly = true)
     public List<Marking> findByValue(String value) {
