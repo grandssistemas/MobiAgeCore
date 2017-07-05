@@ -1,4 +1,6 @@
 package br.com.codein.mobiagecore.application.service.storage;
+import io.gumga.application.GumgaService;
+import io.gumga.application.GumgaService;
 
 import br.com.codein.mobiagecore.application.repository.storage.StorageFileRepository;
 import br.com.codein.mobiagecore.domain.model.storage.StorageFile;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

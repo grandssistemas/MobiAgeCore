@@ -3,14 +3,12 @@ package br.com.codein.mobiagecore.application.service.marking;
 import br.com.codein.mobiagecore.application.repository.marking.MarkingRepository;
 import br.com.codein.mobiagecore.domain.model.marking.Marking;
 import io.gumga.application.GumgaService;
-import io.gumga.core.GumgaThreadScope;
 import io.gumga.core.QueryObject;
 import io.gumga.core.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.List;
 
 /**

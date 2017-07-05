@@ -5,7 +5,6 @@ import br.com.codein.mobiagecore.domain.model.dashboard.Dashboard;
 import io.gumga.application.GumgaService;
 import io.gumga.core.QueryObject;
 import io.gumga.core.SearchResult;
-import io.gumga.domain.repository.GumgaCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
