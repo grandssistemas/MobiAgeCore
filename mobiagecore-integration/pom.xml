@@ -34,7 +34,6 @@
         <dependency>
             <groupId>br.com.grands</groupId>
             <artifactId>financeclient</artifactId>
-            <version>LATEST</version>
         </dependency>
     </dependencies>
 </project>
