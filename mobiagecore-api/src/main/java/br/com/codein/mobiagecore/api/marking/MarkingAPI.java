@@ -1,4 +1,4 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.marking;
 
 
 import br.com.codein.mobiagecore.application.service.marking.MarkingService;
@@ -32,5 +32,11 @@ public class MarkingAPI extends GumgaAPI<Marking, Long> {
     @RequestMapping(value = "/byorigin/{origin}", method = RequestMethod.GET)
     public List<Marking> findByOrigin(@PathVariable String origin){
         return service.findByOrigin(origin);
+    }
+
+    @Transactional(readOnly = true)
+    @RequestMapping(value = "/byoriginandvalue/{origin}/{value}", method = RequestMethod.GET)
+    public List<Marking> findByOrigin(@PathVariable String origin, @PathVariable String value){
+        return service.findByOriginAndValue(origin, value);
     }
 }

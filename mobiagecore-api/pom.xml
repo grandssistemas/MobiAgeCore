@@ -4,7 +4,7 @@
     <parent>
         <groupId>br.com.codein</groupId>
         <artifactId>mobiagecore</artifactId>
-        <version>1.0</version>
+        <version>1.5.0</version>
     </parent>
     <artifactId>mobiagecore-api</artifactId>
     <name>mobiagecore-api</name>
@@ -22,12 +22,18 @@
             <groupId>br.com.codein</groupId>
             <artifactId>mobiagecore-gateway</artifactId>
         </dependency>
-        <!-- DEPENDENCIAS do Framework GUMGA    -->
+        <!-- DEPENDENCIAS em geral-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>io.gumga</groupId>
-            <artifactId>gumga-domain</artifactId>
+            <artifactId>gumga-presentation</artifactId>
+            <version>1.5.10</version>
         </dependency>
-        <!-- DEPENDENCIAS em geral-->
     </dependencies>
     <build>
         <plugins>

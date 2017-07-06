@@ -5,7 +5,6 @@ import br.com.codein.mobiagecore.integration.finance.FinanceUnidadeFinanceiraCli
 import br.com.grands.financeclient.modelo.titulo.Titulo;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

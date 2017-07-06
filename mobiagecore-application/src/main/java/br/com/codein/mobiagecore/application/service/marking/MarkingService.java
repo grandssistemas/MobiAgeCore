@@ -3,14 +3,12 @@ package br.com.codein.mobiagecore.application.service.marking;
 import br.com.codein.mobiagecore.application.repository.marking.MarkingRepository;
 import br.com.codein.mobiagecore.domain.model.marking.Marking;
 import io.gumga.application.GumgaService;
-import io.gumga.core.GumgaThreadScope;
 import io.gumga.core.QueryObject;
 import io.gumga.core.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.List;
 
 /**
@@ -31,11 +29,19 @@ public class MarkingService extends GumgaService<Marking, Long> {
     public List<Marking> findByOrigin(String origin) {
         QueryObject query = new QueryObject();
         query.setAq(String.format("obj.origin = '%s' ", origin));
+        query.setPageSize(Integer.MAX_VALUE);
         SearchResult<Marking> result = this.repository.search(query);
         return result.getValues();
     }
 
-    ;
+
+    @Transactional(readOnly = true)
+    public List<Marking> findByOriginAndValue(String origin, String value) {
+        QueryObject query = new QueryObject();
+        query.setAq(String.format("obj.origin = '%s' and lower(obj.value) like '%%%s%%'", origin,value.toLowerCase()));
+        SearchResult<Marking> result = this.repository.search(query);
+        return result.getValues();
+    }
 
     @Transactional(readOnly = true)
     public List<Marking> findByValue(String value) {

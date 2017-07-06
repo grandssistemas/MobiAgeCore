@@ -1,12 +1,10 @@
-package br.com.codein.mobiagecore.api;
+package br.com.codein.mobiagecore.api.configuration;
 
 import br.com.codein.mobiagecore.application.component.ApplicationConf;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 /**
