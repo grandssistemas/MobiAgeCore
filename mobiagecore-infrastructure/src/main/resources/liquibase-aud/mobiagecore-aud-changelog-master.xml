@@ -6,5 +6,6 @@
     <include file="MAC-AUD-v1.1.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-AUD-v1.2.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-AUD-v1.4.0-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="MAC-AUD-v1.6.0-changelog.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
