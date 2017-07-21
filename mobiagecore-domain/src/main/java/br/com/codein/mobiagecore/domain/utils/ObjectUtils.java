@@ -18,4 +18,8 @@ public class ObjectUtils {
     public static <T> Boolean allNull(T ...items){
         return Arrays.stream(items).allMatch(Objects::isNull);
     }
+
+    public static <T> Boolean anyNull(T ...items){
+        return Arrays.stream(items).anyMatch(Objects::isNull);
+    }
 }

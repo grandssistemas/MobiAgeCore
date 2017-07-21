@@ -1,8 +1,8 @@
-package br.com.codein.movementgroup.application.service.invoice;
+package br.com.codein.mobiagecore.application.service.certificado;
 
+import br.com.codein.mobiagecore.application.repository.certificado.CertificadoRepository;
+import br.com.codein.mobiagecore.domain.model.certificado.Certificado;
 import br.com.codein.mobiagecore.domain.utils.FileUtils;
-import br.com.codein.movementgroup.application.repository.invoice.CertificadoRepository;
-import br.com.codein.movementgroup.domain.model.comission.Certificado;
 import io.gumga.application.GumgaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

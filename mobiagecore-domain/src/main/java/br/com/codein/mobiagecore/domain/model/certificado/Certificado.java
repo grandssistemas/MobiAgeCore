@@ -1,6 +1,6 @@
-package br.com.codein.movementgroup.domain.model.comission;
+package br.com.codein.mobiagecore.domain.model.certificado;
 
-import br.com.codein.movementgroup.domain.exception.CertificateException;
+import br.com.codein.mobiagecore.domain.exceptions.CertificateException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gumga.domain.GumgaModel;
 import io.gumga.domain.GumgaMultitenancy;

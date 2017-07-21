@@ -1,4 +1,4 @@
-package br.com.codein.movementgroup.domain.exception;
+package br.com.codein.mobiagecore.domain.exceptions;
 
 public class CertificateException extends RuntimeException{
 
