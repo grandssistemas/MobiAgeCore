@@ -35,7 +35,7 @@ public class CertificadoService extends GumgaService<Certificado, Long> {
         System.clearProperty("javax.net.ssl.trustStore");
         System.setProperty("jdk.tls.client.protocols", "TLSv1");
 
-        String certificate = FileUtils.createTempFile(new ByteArrayInputStream(certificado.getBytes()),"");
+        String certificate = FileUtils.createTempFile(new ByteArrayInputStream(certificado.getBytes()),"cert");
 
 
         System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
@@ -58,4 +58,9 @@ public class CertificadoService extends GumgaService<Certificado, Long> {
 
     }
 
+    public Certificado upload(byte[] bytes, String password) {
+        Certificado c = new Certificado(bytes, password);
+        this.save(c);
+        return c;
+    }
 }

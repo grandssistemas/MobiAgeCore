@@ -4,6 +4,7 @@ import br.com.codein.mobiagecore.domain.exceptions.CertificateException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gumga.domain.GumgaModel;
 import io.gumga.domain.GumgaMultitenancy;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
@@ -23,11 +24,16 @@ public class Certificado extends GumgaModel<Long> {
 
 
     @Column(columnDefinition = "bytea")
+    @ApiModelProperty("Bytes do arquivo do certificado digital")
     private byte[] bytes;
 
+    @ApiModelProperty("Senha do certificado digital")
     private String password;
-
+    @ApiModelProperty("Alias do certificado, gerado pela keystore")
     private String alias;
+
+    public Certificado(){
+    }
 
 
     public Certificado(byte[] bytes, String password) {
