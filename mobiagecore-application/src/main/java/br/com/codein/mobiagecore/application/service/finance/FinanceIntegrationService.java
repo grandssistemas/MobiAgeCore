@@ -35,4 +35,8 @@ public class FinanceIntegrationService {
     public List<UnidadeFinanceira> getFinanceUnits(String name){
         return unidadeFinanceiraClient.getUnidadeFinanceira(name);
     }
+
+    public UnidadeFinanceira createFinanceUnit(UnidadeFinanceira unidadeFinanceira){
+        return unidadeFinanceiraClient.createUnidadeFinanceira(unidadeFinanceira);
+    }
 }

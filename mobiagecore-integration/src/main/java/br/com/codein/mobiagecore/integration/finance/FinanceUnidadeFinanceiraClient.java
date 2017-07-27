@@ -34,6 +34,10 @@ public class FinanceUnidadeFinanceiraClient extends AbstractClient<UnidadeFinanc
     }
 
     public List<UnidadeFinanceira> getUnidadeFinanceira(String name){
-        return this.getList("/api/integration/getfinanceunitintegration?name=" + name).getBody();
+        return this.getList("/api/integration/financeunit?name=" + name).getBody();
+    }
+
+    public UnidadeFinanceira createUnidadeFinanceira(UnidadeFinanceira unidadeFinanceira){
+        return this.post("/api/integration/financeunit",unidadeFinanceira).getBody();
     }
 }
