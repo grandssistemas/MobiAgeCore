@@ -8,6 +8,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -42,6 +43,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> get(String url, Map<String, Object> stringObjectMap) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("Accept", "application/json, text/plain, */*");
         this.headers.set("Accept-Encoding", "gzip, deflate");
@@ -62,6 +64,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<List<T>> getList(String url, Map<String, Object> stringObjectMap) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("Accept", "application/json, text/plain, */*");
         this.headers.set("Accept-Encoding", "gzip, deflate");
@@ -75,6 +78,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> post(String url, Object object) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("Accept", "application/json, text/plain, */*");
         this.headers.set("Accept-Encoding", "gzip, deflate");
@@ -86,6 +90,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> postFile(String url, File file) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
@@ -98,6 +103,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> postXml(String url, File file) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
@@ -109,6 +115,7 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> delete(String url, Object object) {
         this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
         this.headers.set("Accept", "application/json, text/plain, */*");
         this.headers.set("Accept-Encoding", "gzip, deflate");
