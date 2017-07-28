@@ -1,7 +1,7 @@
 package br.com.codein.mobiagecore.domain.model.marking.enums;
 
 public enum MarkingOrigin {
-    PRODUCT("Produto"),PERSON("Pessoa"),OPERATION("Operação"),PAYMENT("Tipo de Pagamento"), MOVEMENTGROUP("Movimentação");
+    PRODUCT("Produto"),PERSON("Pessoa"),OPERATION("Operação"),PAYMENT("Tipo de Pagamento"), MOVEMENTGROUP("Movimentação"), CLIENTGROUP("Grupo de Cliente");
     private final String value;
 
     MarkingOrigin(String value) {
@@ -22,6 +22,8 @@ public enum MarkingOrigin {
                 return OPERATION;
             case "PAYMENT":
                 return PAYMENT;
+            case "CLIENTGROUP":
+                return CLIENTGROUP;
             default:
                 return null;
 
