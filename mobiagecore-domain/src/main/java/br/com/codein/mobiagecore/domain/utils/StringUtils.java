@@ -8,6 +8,10 @@ import java.util.NoSuchElementException;
  */
 public class StringUtils {
 
+    private StringUtils() {
+
+    }
+
     public static String doubleQuotedStr(String string) {
         if (string == null) {
             return null;
@@ -44,19 +48,16 @@ public class StringUtils {
 
     public static String coalesceNotBlankString(String ...strings){
         try {
-            return Arrays.stream(strings).filter(str -> !org.apache.commons.lang3.StringUtils.isBlank(str)).findFirst().get();
+            return Arrays.stream(strings)
+                    .filter(str -> !isBlank(str))
+                    .findFirst().orElse(null);
         } catch (NoSuchElementException ex) {
             return null;
         }
     }
 
     public static Boolean isInteger(String string){
-        try {
-            Integer.parseInt(string);
-        } catch(NumberFormatException | NullPointerException e) {
-            return false;
-        }
-        return true;
+        return string.matches("\\d*");
     }
 
     public static Boolean isBlank(String str) {

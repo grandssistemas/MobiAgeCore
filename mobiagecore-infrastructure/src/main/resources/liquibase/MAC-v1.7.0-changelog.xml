@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="Luiz Augusto" id="MAC-12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="certificado"/>
+            </not>
+        </preConditions>
+        <createTable tableName="certificado">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="oi" type="VARCHAR(255)"/>
+            <column type="bytea" name="bytes"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="alias" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Luiz Augusto" id="MAC-13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists tableName="certificado"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey columnNames="id" constraintName="certificado_pkey" tableName="certificado"/>
+    </changeSet>
+    <changeSet author="Luiz Augusto" id="MAC-14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="seq_certificado"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="seq_certificado"/>
+    </changeSet>
+</databaseChangeLog>
