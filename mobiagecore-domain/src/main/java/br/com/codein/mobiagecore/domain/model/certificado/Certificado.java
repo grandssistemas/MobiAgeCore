@@ -1,6 +1,7 @@
 package br.com.codein.mobiagecore.domain.model.certificado;
 
 import br.com.codein.mobiagecore.domain.exceptions.CertificateException;
+import br.com.codein.mobiagecore.domain.utils.PasswordUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.gumga.domain.GumgaModel;
 import io.gumga.domain.GumgaMultitenancy;
@@ -32,13 +33,17 @@ public class Certificado extends GumgaModel<Long> {
     @ApiModelProperty("Alias do certificado, gerado pela keystore")
     private String alias;
 
-    public Certificado(){
+    public Certificado() {
     }
 
 
     public Certificado(byte[] bytes, String password) {
         this.bytes = bytes;
-        this.password = password;
+        try {
+            this.password = PasswordUtils.encrypt(password.toCharArray());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         KeyStore ks = this.getKeyStore();
         if (ks == null) {
@@ -78,7 +83,7 @@ public class Certificado extends GumgaModel<Long> {
         try {
             KeyStore ks;
             ks = KeyStore.getInstance("PKCS12");
-            ks.load(new ByteArrayInputStream(this.bytes), this.password.toCharArray());
+            ks.load(new ByteArrayInputStream(this.bytes), PasswordUtils.decrypt(this.password.toCharArray()).toCharArray());
             return ks;
         } catch (Exception e) {
             return null;
@@ -102,7 +107,7 @@ public class Certificado extends GumgaModel<Long> {
     @JsonIgnore
     public PrivateKey getPrivateKey() {
         try {
-            return (PrivateKey) this.getKeyStore().getKey(this.alias, this.password.toCharArray());
+            return (PrivateKey) this.getKeyStore().getKey(this.alias, PasswordUtils.decrypt(this.password.toCharArray()).toCharArray());
         } catch (Exception e) {
             return null;
         }
