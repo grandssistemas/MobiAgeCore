@@ -35,7 +35,7 @@ public class FinancePessoaClient extends AbstractClient<Pessoa> {
     }
 
     public List<Pessoa> createPessoas(List<Pessoa> pessoas){
-        return this.post("/api/individual/saveintegration", pessoas).getBody();
+        return this.post("/api/integration/individual/saveintegration", pessoas).getBody();
     }
 
 }

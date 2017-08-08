@@ -35,7 +35,7 @@ public class FinanceGrupoUnidadeFinanceiraClient extends AbstractClient<GrupoUni
     }
 
     public List<GrupoUnidadeFinanceira> createGruposUnidadeFinanceiras(List<GrupoUnidadeFinanceira> grupoUnidadeFinanceiras){
-        return this.post("/api/financeunitgroup/saveintegration", grupoUnidadeFinanceiras).getBody();
+        return this.post("/api/integration/financeunitgroup/saveintegration", grupoUnidadeFinanceiras).getBody();
     }
 
 }
