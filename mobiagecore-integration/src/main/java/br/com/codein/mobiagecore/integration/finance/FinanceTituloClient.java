@@ -33,6 +33,6 @@ public class FinanceTituloClient extends AbstractClient<Titulo> {
     }
 
     public Titulo createTitulo(Titulo titulo){
-        return this.post("/api/title/saveintegration", titulo).getBody();
+        return this.post("/api/titleintegration/saveintegration", titulo).getBody();
     }
 }
