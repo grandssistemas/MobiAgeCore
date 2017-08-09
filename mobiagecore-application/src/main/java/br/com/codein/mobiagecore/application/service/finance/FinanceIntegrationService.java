@@ -4,6 +4,7 @@ import br.com.codein.mobiagecore.integration.finance.FinanceTituloClient;
 import br.com.codein.mobiagecore.integration.finance.FinanceUnidadeFinanceiraClient;
 import br.com.grands.financeclient.modelo.titulo.Titulo;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
+import br.com.grands.financeclient.modelo.titulo.enums.TipoUnidadeFinanceira;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,5 +39,9 @@ public class FinanceIntegrationService {
 
     public UnidadeFinanceira createFinanceUnit(UnidadeFinanceira unidadeFinanceira){
         return unidadeFinanceiraClient.createUnidadeFinanceira(unidadeFinanceira);
+    }
+
+    public List<UnidadeFinanceira> getFinanceUnitsByAccountType(TipoUnidadeFinanceira account, String nome) {
+        return unidadeFinanceiraClient.getUnidadeFinanceiraByAccountTypeAndName(account, nome);
     }
 }
