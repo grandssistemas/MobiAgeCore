@@ -28,7 +28,7 @@ public class FinanceIntegrationService {
     }
 
 
-    public Titulo createTitulo(Titulo titulo){
+    public List<Titulo> createTitulo(List<Titulo> titulo){
         return tituloClient.createTitulo(titulo);
     }
 

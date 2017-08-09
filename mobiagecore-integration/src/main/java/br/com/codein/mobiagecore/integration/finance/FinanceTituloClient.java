@@ -6,6 +6,7 @@ import io.gumga.core.GumgaValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -32,7 +33,7 @@ public class FinanceTituloClient extends AbstractClient<Titulo> {
         return properties;
     }
 
-    public Titulo createTitulo(Titulo titulo){
+    public List<Titulo> createTitulo(List<Titulo> titulo){
         return this.post("/api/titleintegration/saveintegration", titulo).getBody();
     }
 }
