@@ -2,6 +2,7 @@ package br.com.codein.mobiagecore.integration.finance;
 
 import br.com.codein.mobiagecore.integration.generic.AbstractClient;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
+import br.com.grands.financeclient.modelo.titulo.enums.TipoUnidadeFinanceira;
 import io.gumga.core.GumgaValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,17 +28,25 @@ public class FinanceUnidadeFinanceiraClient extends AbstractClient<UnidadeFinanc
     }
 
     private Properties getProperties() {
-        if(properties == null)
+        if (properties == null)
             properties = gumgaValues.getCustomFileProperties();
 
         return properties;
     }
 
-    public List<UnidadeFinanceira> getUnidadeFinanceira(String name){
+    public List<UnidadeFinanceira> getUnidadeFinanceira(String name) {
         return this.getList("/api/integration/financeunit?name=" + name).getBody();
     }
 
-    public UnidadeFinanceira createUnidadeFinanceira(UnidadeFinanceira unidadeFinanceira){
-        return this.post("/api/integration/financeunit",unidadeFinanceira).getBody();
+    public List<UnidadeFinanceira> getUnidadeFinanceiraByAccountTypeAndName(TipoUnidadeFinanceira account, String name) {
+        return this.getList("/api/integration/financeunit/getbyaccounttype?accountType= "+ account +"&name=" + name).getBody();
+    }
+
+    public UnidadeFinanceira createUnidadeFinanceira(UnidadeFinanceira unidadeFinanceira) {
+        return this.post("/api/integration/financeunit", unidadeFinanceira).getBody();
+    }
+
+    public List<UnidadeFinanceira> createUnidadesFinanceiras(List<UnidadeFinanceira> unidadeFinanceiras) {
+        return this.post("/api/integration/financeunit/saveintegration", unidadeFinanceiras).getBody();
     }
 }
