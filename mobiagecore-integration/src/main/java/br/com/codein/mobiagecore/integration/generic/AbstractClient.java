@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +87,18 @@ public abstract class AbstractClient<T> {
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, objectClass);
+    }
+
+    protected ResponseEntity<List> post(String url, List<T> object) {
+        this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(object, this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, List.class);
     }
 
     protected ResponseEntity<T> postFile(String url, File file) {

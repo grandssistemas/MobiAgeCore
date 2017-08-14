@@ -13,7 +13,8 @@ public enum ReportType {
     HEADERFOOTER("Cabeçalho e Rodapé"),
     TAG("Etiqueta"),
     CASHCHECKOUT("Fechamento de Caixa"),
-    CASHCLOSE("Fechamento");
+    CASHCLOSE("Fechamento"),
+    PRINTSALE("Romaneio Venda");
 
     private final String label;
 
