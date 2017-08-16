@@ -1,7 +1,6 @@
 package br.com.codein.mobiagecore.integration.generic;
 
 import io.gumga.core.GumgaThreadScope;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
@@ -15,16 +14,13 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
-import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by gelatti on 03/05/17.
  */
 @Component
-public abstract class AbstractClientNoClass<T> {
+public abstract class AbstractClientNoClass {
 
     private HttpHeaders headers;
     private RestTemplate restTemplate;
@@ -38,7 +34,7 @@ public abstract class AbstractClientNoClass<T> {
         this.url = url;
     }
 
-    protected ResponseEntity get(String url, Object stringObjectMap) {
+    protected ResponseEntity<Object> get(String url, Object stringObjectMap) {
         this.restTemplate = new RestTemplate();
         this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
@@ -50,7 +46,7 @@ public abstract class AbstractClientNoClass<T> {
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, Object.class, stringObjectMap);
     }
 
-    protected ResponseEntity get(String url) {
+    protected ResponseEntity<Object> get(String url) {
         return this.get(url, new HashMap<>());
     }
 

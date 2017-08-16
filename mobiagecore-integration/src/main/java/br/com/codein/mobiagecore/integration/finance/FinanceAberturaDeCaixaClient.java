@@ -1,19 +1,22 @@
 package br.com.codein.mobiagecore.integration.finance;
 
 import br.com.codein.mobiagecore.integration.generic.AbstractClient;
+import br.com.codein.mobiagecore.integration.generic.AbstractClientNoClass;
 import br.com.grands.financeclient.modelo.titulo.Pessoa;
 import io.gumga.core.GumgaValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
  * Created by augusto on 14/06/17.
  */
 @Component
-public class FinanceAberturaDeCaixaClient extends AbstractClient<Pessoa> {
+public class FinanceAberturaDeCaixaClient extends AbstractClientNoClass {
 
     private GumgaValues gumgaValues;
 
@@ -33,8 +36,12 @@ public class FinanceAberturaDeCaixaClient extends AbstractClient<Pessoa> {
         return properties;
     }
 
-    public List<Pessoa> createPessoas(List<Pessoa> pessoas){
-        return this.post("/api/integration/individual/saveintegration", pessoas).getBody();
+    public Boolean isCaixaOpen(Long id){
+        return (Boolean) this.get("/api/integration/cashcheckin/isopen/"+id).getBody();
+    }
+
+    public Long getOpenCaixa(){
+        return (Long) this.get("/api/integration/cashcheckin/opencashcheckin").getBody();
     }
 
 }
