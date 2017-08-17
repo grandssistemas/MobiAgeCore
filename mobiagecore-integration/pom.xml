@@ -35,5 +35,10 @@
             <groupId>br.com.grands</groupId>
             <artifactId>financeclient</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
