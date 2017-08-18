@@ -3,6 +3,7 @@ package br.com.codein.mobiagecore.application.service.finance;
 import br.com.codein.mobiagecore.integration.finance.FinanceCheckinClient;
 import br.com.codein.mobiagecore.integration.finance.FinanceTituloClient;
 import br.com.codein.mobiagecore.integration.finance.FinanceUnidadeFinanceiraClient;
+import br.com.grands.financeclient.modelo.titulo.Abertura;
 import br.com.grands.financeclient.modelo.titulo.Titulo;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
 import br.com.grands.financeclient.modelo.titulo.enums.TipoUnidadeFinanceira;
@@ -51,7 +52,11 @@ public class FinanceIntegrationService {
     }
 
 
-    public ObjectNode createCheckin(ObjectNode node){
-        return financeCheckinClient.createCheckin(node);
+    public Abertura createCheckin(Abertura abertura){
+        return financeCheckinClient.createCheckin(abertura);
+    }
+
+    public Abertura updateCheckin(Abertura abertura){
+        return financeCheckinClient.updateCheckin(abertura.idIntegracao, abertura);
     }
 }
