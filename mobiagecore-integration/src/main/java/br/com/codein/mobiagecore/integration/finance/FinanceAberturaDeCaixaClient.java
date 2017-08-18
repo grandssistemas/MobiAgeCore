@@ -41,7 +41,13 @@ public class FinanceAberturaDeCaixaClient extends AbstractClientNoClass {
     }
 
     public Long getOpenCaixa(){
-        return (Long) this.get("/api/integration/cashcheckin/opencashcheckin").getBody();
+        Object body = this.get("/api/integration/cashcheckin/opencashcheckin").getBody();
+        if(body instanceof Integer){
+            return Long.valueOf((Integer)body);
+        }else if(body instanceof Long){
+            return (Long) body;
+        }
+        return null;
     }
 
 }
