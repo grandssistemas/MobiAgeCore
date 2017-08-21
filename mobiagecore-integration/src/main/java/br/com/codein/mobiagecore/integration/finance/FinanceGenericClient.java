@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.util.Properties;
 
-public class FinanceFinanceUnitBalanceClient extends AbstractClient<Object> {
+public class FinanceGenericClient extends AbstractClient<Object> {
 
     private GumgaValues gumgaValues;
 
     private Properties properties;
 
     @Autowired
-    public FinanceFinanceUnitBalanceClient(GumgaValues gumgaValues) {
+    public FinanceGenericClient(GumgaValues gumgaValues) {
         super();
         this.gumgaValues = gumgaValues;
         this.url = getProperties().getProperty("finance.url");
