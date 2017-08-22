@@ -3,10 +3,12 @@ package br.com.codein.mobiagecore.integration.finance;
 import br.com.codein.mobiagecore.integration.generic.AbstractClient;
 import io.gumga.core.GumgaValues;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Properties;
 
+@Component
 public class FinanceGenericClient extends AbstractClient<Object> {
 
     private GumgaValues gumgaValues;
@@ -28,6 +30,6 @@ public class FinanceGenericClient extends AbstractClient<Object> {
     }
 
     public BigDecimal getFinanceUnitBalance(Long financeUnitId) {
-        return (BigDecimal) this.get("/api/integration/financeunit/getbalance?financeUnitId=" + financeUnitId).getBody();
+        return new BigDecimal(this.get("/api/integration/financeunit/getbalance?financeUnitId=" + financeUnitId).getBody().toString());
     }
 }
