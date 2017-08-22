@@ -65,6 +65,22 @@ public abstract class AbstractClient<T> {
         return this.get(url, new HashMap<>());
     }
 
+    protected ResponseEntity getGeneric(String url, Map<String, Object> stringObjectMap) {
+        this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, this.requestEntity, Object.class, stringObjectMap);
+    }
+
+    protected ResponseEntity getGeneric(String url) {
+        return this.getGeneric(url, new HashMap<>());
+    }
+
     protected ResponseEntity<List<T>> getList(String url) {
         return this.getList(url, new HashMap<>());
     }
