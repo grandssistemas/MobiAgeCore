@@ -1,5 +1,9 @@
 package br.com.codein.mobiagecore.integration.generic;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import io.gumga.core.GumgaThreadScope;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
@@ -33,7 +37,10 @@ public abstract class AbstractClient<T> {
     private HttpEntity requestEntity;
     protected String url;
 
+    private ObjectMapper mapper;
+
     public AbstractClient() {
+        mapper = new ObjectMapper();
         this.objectClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
@@ -88,9 +95,9 @@ public abstract class AbstractClient<T> {
         this.headers.set("Content-Type", "application/json;charset=utf-8");
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(this.headers);
-        ParameterizedTypeReference<List<T>> typeRef = new ParameterizedTypeReference<List<T>>() {
-        };
-        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, typeRef, stringObjectMap);
+        ResponseEntity<JsonNode> nodeResponse = this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, JsonNode.class, stringObjectMap);
+
+        return this.parseArray(nodeResponse);
     }
 
     protected ResponseEntity<T> post(String url, Object object) {
@@ -105,7 +112,7 @@ public abstract class AbstractClient<T> {
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, objectClass);
     }
 
-    protected ResponseEntity<List> post(String url, List<T> object) {
+    protected ResponseEntity<List<T>> post(String url, List<T> object) {
         this.restTemplate = new RestTemplate();
         this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
@@ -114,7 +121,8 @@ public abstract class AbstractClient<T> {
         this.headers.set("Content-Type", "application/json;charset=utf-8");
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
-        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, List.class);
+        ResponseEntity<JsonNode> nodeResponse = this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, JsonNode.class);
+        return this.parseArray(nodeResponse);
     }
 
     protected ResponseEntity<T> postFile(String url, File file) {
@@ -153,4 +161,45 @@ public abstract class AbstractClient<T> {
         this.requestEntity = new HttpEntity(object, this.headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.DELETE, (HttpEntity<?>) this.requestEntity, objectClass);
     }
+
+    protected ResponseEntity<List> put(String url, List<T> object) {
+        this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(object, this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.PUT, (HttpEntity<?>) this.requestEntity, List.class);
+    }
+
+    protected ResponseEntity<T> put(String url, Object object) {
+        this.restTemplate = new RestTemplate();
+        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        this.headers = new HttpHeaders();
+        this.headers.set("Accept", "application/json, text/plain, */*");
+        this.headers.set("Accept-Encoding", "gzip, deflate");
+        this.headers.set("Content-Type", "application/json;charset=utf-8");
+        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.requestEntity = new HttpEntity(object, this.headers);
+        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.PUT, (HttpEntity<?>) this.requestEntity, objectClass);
+    }
+
+
+    private ResponseEntity<List<T>> parseArray(ResponseEntity<JsonNode> nodeResponse){
+
+        List<T> response = new ArrayList<>();
+
+
+        nodeResponse.getBody().forEach(subNode -> {
+            try {
+                response.add(mapper.treeToValue(subNode, objectClass));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
+        return new ResponseEntity<>(response, nodeResponse.getStatusCode());
+    }
+
 }
