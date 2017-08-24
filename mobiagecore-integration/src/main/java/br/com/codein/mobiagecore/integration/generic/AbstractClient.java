@@ -95,21 +95,9 @@ public abstract class AbstractClient<T> {
         this.headers.set("Content-Type", "application/json;charset=utf-8");
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(this.headers);
-        ParameterizedTypeReference<List<T>> typeRef = new ParameterizedTypeReference<List<T>>() {
-        };
         ResponseEntity<JsonNode> nodeResponse = this.restTemplate.exchange(this.url.concat(url), HttpMethod.GET, (HttpEntity<?>) this.requestEntity, JsonNode.class, stringObjectMap);
 
-        List<T> response = new ArrayList<>();
-
-
-        nodeResponse.getBody().forEach(subNode -> {
-            try {
-                response.add(mapper.treeToValue(subNode, objectClass));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        });
-        return new ResponseEntity<>(response, nodeResponse.getStatusCode());
+        return this.parseArray(nodeResponse);
     }
 
     protected ResponseEntity<T> post(String url, Object object) {
@@ -124,7 +112,7 @@ public abstract class AbstractClient<T> {
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, objectClass);
     }
 
-    protected ResponseEntity<List> post(String url, List<T> object) {
+    protected ResponseEntity<List<T>> post(String url, List<T> object) {
         this.restTemplate = new RestTemplate();
         this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
@@ -133,7 +121,8 @@ public abstract class AbstractClient<T> {
         this.headers.set("Content-Type", "application/json;charset=utf-8");
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
-        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, List.class);
+        ResponseEntity<JsonNode> nodeResponse = this.restTemplate.exchange(this.url.concat(url), HttpMethod.POST, (HttpEntity<?>) this.requestEntity, JsonNode.class);
+        return this.parseArray(nodeResponse);
     }
 
     protected ResponseEntity<T> postFile(String url, File file) {
@@ -195,6 +184,22 @@ public abstract class AbstractClient<T> {
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.PUT, (HttpEntity<?>) this.requestEntity, objectClass);
+    }
+
+
+    private ResponseEntity<List<T>> parseArray(ResponseEntity<JsonNode> nodeResponse){
+
+        List<T> response = new ArrayList<>();
+
+
+        nodeResponse.getBody().forEach(subNode -> {
+            try {
+                response.add(mapper.treeToValue(subNode, objectClass));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
+        return new ResponseEntity<>(response, nodeResponse.getStatusCode());
     }
 
 }
