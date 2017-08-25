@@ -1,10 +1,13 @@
 package br.com.codein.mobiagecore.application.service.finance;
 
+import br.com.codein.mobiagecore.integration.finance.FinanceCheckinClient;
 import br.com.codein.mobiagecore.integration.finance.FinanceTituloClient;
 import br.com.codein.mobiagecore.integration.finance.FinanceUnidadeFinanceiraClient;
+import br.com.grands.financeclient.modelo.titulo.Abertura;
 import br.com.grands.financeclient.modelo.titulo.Titulo;
 import br.com.grands.financeclient.modelo.titulo.UnidadeFinanceira;
 import br.com.grands.financeclient.modelo.titulo.enums.TipoUnidadeFinanceira;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +24,14 @@ public class FinanceIntegrationService {
 
     private FinanceUnidadeFinanceiraClient unidadeFinanceiraClient;
 
+    private FinanceCheckinClient financeCheckinClient;
+
     @Autowired
     public FinanceIntegrationService(FinanceTituloClient tituloClient,
-                                     FinanceUnidadeFinanceiraClient unidadeFinanceiraClient) {
+                                     FinanceUnidadeFinanceiraClient unidadeFinanceiraClient, FinanceCheckinClient financeCheckinClient) {
         this.tituloClient = tituloClient;
         this.unidadeFinanceiraClient = unidadeFinanceiraClient;
+        this.financeCheckinClient = financeCheckinClient;
     }
 
 
@@ -43,5 +49,14 @@ public class FinanceIntegrationService {
 
     public List<UnidadeFinanceira> getFinanceUnitsByAccountType(TipoUnidadeFinanceira account, String nome) {
         return unidadeFinanceiraClient.getUnidadeFinanceiraByAccountTypeAndName(account, nome);
+    }
+
+
+    public Abertura createCheckin(Abertura abertura){
+        return financeCheckinClient.createCheckin(abertura);
+    }
+
+    public Abertura updateCheckin(Abertura abertura){
+        return financeCheckinClient.updateCheckin(abertura.idIntegracao, abertura);
     }
 }
