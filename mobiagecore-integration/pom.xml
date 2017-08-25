@@ -40,5 +40,10 @@
             <artifactId>jackson-databind</artifactId>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.8.1</version>
+        </dependency>
     </dependencies>
 </project>

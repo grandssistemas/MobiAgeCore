@@ -5,13 +5,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import io.gumga.core.GumgaThreadScope;
+import okhttp3.*;
+import okhttp3.MediaType;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -19,7 +18,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -140,9 +142,9 @@ public abstract class AbstractClient<T> {
 
     protected ResponseEntity<T> postXml(String url, File file) {
         this.restTemplate = new RestTemplate();
-        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+//        this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
-        this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
+        this.headers.set("gumgaToken", "eternoGrands");
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         Resource resource = new FileSystemResource(file);
         map.add("file", resource);

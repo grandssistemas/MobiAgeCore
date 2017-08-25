@@ -38,7 +38,7 @@ public class StorageFileServiceTest extends AbstractTest {
 //    @Test
     public void testSaveXmlFile() throws IOException {
         File file = new File("/home/gelatti/xmlteste.xml");
-        StorageFile sf = storageFileService.saveXml(file, "07110945000105");
+        StorageFile sf = storageFileService.saveXml(file, "02285042001113");
         Assert.assertNotNull(sf);
     }
 }
