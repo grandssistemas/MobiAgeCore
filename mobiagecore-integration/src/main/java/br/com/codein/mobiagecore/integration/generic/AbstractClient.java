@@ -164,7 +164,7 @@ public abstract class AbstractClient<T> {
         return this.restTemplate.exchange(this.url.concat(url), HttpMethod.DELETE, (HttpEntity<?>) this.requestEntity, objectClass);
     }
 
-    protected ResponseEntity<List> put(String url, List<T> object) {
+    protected ResponseEntity<List<T>> put(String url, List<T> object) {
         this.restTemplate = new RestTemplate();
         this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.headers = new HttpHeaders();
@@ -173,7 +173,8 @@ public abstract class AbstractClient<T> {
         this.headers.set("Content-Type", "application/json;charset=utf-8");
         this.headers.set("gumgaToken", GumgaThreadScope.gumgaToken.get());
         this.requestEntity = new HttpEntity(object, this.headers);
-        return this.restTemplate.exchange(this.url.concat(url), HttpMethod.PUT, (HttpEntity<?>) this.requestEntity, List.class);
+        ResponseEntity<JsonNode> nodeResponse = this.restTemplate.exchange(this.url.concat(url), HttpMethod.PUT, (HttpEntity<?>) this.requestEntity, JsonNode.class);
+        return this.parseArray(nodeResponse);
     }
 
     protected ResponseEntity<T> put(String url, Object object) {
