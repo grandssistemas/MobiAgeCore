@@ -50,10 +50,10 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
     @Transactional
     public StorageFile saveXml (File file, String key) throws IOException {
         Map map = storageClient.uploadFile(file, key).getBody();
-        if (((ArrayList)map.get("arquivos")).size() > 0) {
+        if (!((Map)map.get("file")).isEmpty()) {
             StorageFile sf = new StorageFile();
-            sf.setUrl(String.valueOf(((Map) map.get("object")).get("localizacaoStorage")));
-            sf.setIdStorage(Long.valueOf(String.valueOf(((Map) map.get("object")).get("id"))));
+            sf.setUrl(String.valueOf(((Map) map.get("file")).get("hash")));
+            sf.setIdStorage(Long.valueOf(String.valueOf(((Map) map.get("file")).get("id"))));
             save(sf);
             return sf;
         } else {

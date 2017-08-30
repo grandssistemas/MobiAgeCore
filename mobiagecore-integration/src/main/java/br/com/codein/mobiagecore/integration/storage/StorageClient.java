@@ -25,7 +25,8 @@ public class StorageClient extends AbstractClient<Map> {
     public StorageClient(GumgaValues gumgaValues) {
         super();
         this.gumgaValues = gumgaValues;
-        this.url = getProperties().getProperty("storage.url");
+//        this.url = getProperties().getProperty("storage.url");
+        this.url = "http://45.79.198.84/storage-api";
     }
 
     private Properties getProperties() {
@@ -36,17 +37,17 @@ public class StorageClient extends AbstractClient<Map> {
     }
 
     public ResponseEntity<Map> uploadSharedImage(File file, String key) {
-        String url = "/api/arquivos/upload/imagem-compartilhada/containers/" + key;
+        String url = "/api/database-file/upload/" + key;
         return super.postFile(url, file);
     }
 
     public ResponseEntity<Map> uploadFile(File file, String key) throws IOException {
-        String url = "/api/arquivos/upload/documento-fiscal-eletronico/containers/" + key;
+        String url = "/api/database-file/tax-document/upload/" + key;
         return super.postXml(url, file);
     }
 
     public ResponseEntity<Map> uploadImage(File file, String key) {
-        String url = "/api/arquivos/upload/imagem/containers/" + key;
+        String url = "/api/database-file/upload/" + key;
         return super.post(url, file);
     }
 }
