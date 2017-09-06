@@ -14,7 +14,8 @@ public enum ReportType {
     TAG("Etiqueta"),
     CASHCHECKOUT("Fechamento de Caixa"),
     CASHCLOSE("Fechamento"),
-    PRINTSALE("Romaneio Venda");
+    PRINTSALE("Romaneio Venda"),
+    EXCHANGE_RECEIPT("Recibo de troca");
 
     private final String label;
 
