@@ -28,6 +28,15 @@ public class GenericReport extends GumgaModel<Long> {
     @ApiModelProperty(value = "Nome do relatorio salvo")
     private String name;
 
+    public GenericReport() {
+    }
+
+    public GenericReport(String name, ReportType reportType, String jsonReport) {
+        this.jsonReport = jsonReport;
+        this.reportType = reportType;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
