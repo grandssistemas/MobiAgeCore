@@ -26,7 +26,7 @@ public class GenericReportService extends GumgaService<GenericReport, Long> {
     }
 
     public Boolean containsDefault(ReportType type, String name) {
-        String hql = "SELECT obj FROM GenericReport WHERE obj.oi IS NULL AND obj.name = :name AND obj.type = :type";
+        String hql = "SELECT obj FROM GenericReport obj WHERE obj.oi IS NULL AND obj.name = :name AND obj.reportType = :type";
         Map<String,Object> params = new HashMap<>();
         params.put("name",name);
         params.put("type",type);
