@@ -15,11 +15,21 @@ public class ObjectUtils {
         return collection.stream().filter(Objects::nonNull).findFirst().orElse(null);
     }
 
+    @SafeVarargs
     public static <T> Boolean allNull(T ...items){
         return Arrays.stream(items).allMatch(Objects::isNull);
     }
 
+    public static <T> Boolean allNull(Collection<T> collection){
+        return collection.stream().allMatch(Objects::isNull);
+    }
+
+    @SafeVarargs
     public static <T> Boolean anyNull(T ...items){
         return Arrays.stream(items).anyMatch(Objects::isNull);
+    }
+
+    public static <T> Boolean anyNull(Collection<T> collection){
+        return collection.stream().anyMatch(Objects::isNull);
     }
 }
