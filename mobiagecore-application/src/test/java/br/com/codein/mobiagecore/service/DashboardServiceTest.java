@@ -19,17 +19,6 @@ public class DashboardServiceTest extends AbstractTest {
     @Autowired
     private DashboardService service;
 
-    private final ManagedChannel channel;
-    private final NFeGrpc.NFeBlockingStub blockingStubNFeGrpc;
-    private final ConfiguracaoGrpc.ConfiguracaoBlockingStub blockingStubConfiguracaoGrpc;
-
-    public DashboardServiceTest(ManagedChannel channel, NFeGrpc.NFeBlockingStub blockingStubNFeGrpc, ConfiguracaoGrpc.ConfiguracaoBlockingStub blockingStubConfiguracaoGrpc) {
-        this.channel = channel;
-        this.blockingStubNFeGrpc = blockingStubNFeGrpc;
-        this.blockingStubConfiguracaoGrpc = blockingStubConfiguracaoGrpc;
-    }
-
-
     @Test
     public void testSave() {
         Dashboard dashboard = new Dashboard();
