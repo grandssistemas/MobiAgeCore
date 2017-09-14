@@ -4,6 +4,9 @@ import br.com.codein.mobiagecore.AbstractTest;
 import br.com.codein.mobiagecore.application.service.dashboard.DashboardService;
 import br.com.codein.mobiagecore.domain.model.dashboard.Dashboard;
 import br.com.codein.mobiagecore.domain.model.dashboard.enums.DashboardType;
+import br.com.sgsistemas.sgdfe.grpc.service.ConfiguracaoGrpc;
+import br.com.sgsistemas.sgdfe.grpc.service.NFeGrpc;
+import io.grpc.ManagedChannel;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,17 @@ public class DashboardServiceTest extends AbstractTest {
 
     @Autowired
     private DashboardService service;
+
+    private final ManagedChannel channel;
+    private final NFeGrpc.NFeBlockingStub blockingStubNFeGrpc;
+    private final ConfiguracaoGrpc.ConfiguracaoBlockingStub blockingStubConfiguracaoGrpc;
+
+    public DashboardServiceTest(ManagedChannel channel, NFeGrpc.NFeBlockingStub blockingStubNFeGrpc, ConfiguracaoGrpc.ConfiguracaoBlockingStub blockingStubConfiguracaoGrpc) {
+        this.channel = channel;
+        this.blockingStubNFeGrpc = blockingStubNFeGrpc;
+        this.blockingStubConfiguracaoGrpc = blockingStubConfiguracaoGrpc;
+    }
+
 
     @Test
     public void testSave() {

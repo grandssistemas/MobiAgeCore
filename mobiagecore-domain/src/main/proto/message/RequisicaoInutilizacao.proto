@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoInutilizacao {
+  uint64 cnpj = 1;
+  uint32 modelo = 2;
+  uint32 serie = 3;
+  uint32 ano = 4;
+  uint32 numero_inicial = 5;
+  uint32 numero_final = 6;
+  string justificativa = 7;
+}

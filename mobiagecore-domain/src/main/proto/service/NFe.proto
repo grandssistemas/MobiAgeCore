@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "message/RequisicaoAutorizacao.proto";
+import "message/RespostaAutorizacao.proto";
+import "message/RequisicaoInutilizacao.proto";
+import "message/RespostaInutilizacao.proto";
+import "message/RequisicaoCancelamento.proto";
+import "message/RespostaCancelamento.proto";
+
+package SGDFE.Grpc.Service;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.service";
+
+service NFe {
+  rpc Autorizar(SGDFE.Grpc.Message.RequisicaoAutorizacao) returns(SGDFE.Grpc.Message.RespostaAutorizacao);
+  rpc Inutilizar(SGDFE.Grpc.Message.RequisicaoInutilizacao) returns(SGDFE.Grpc.Message.RespostaInutilizacao);
+  rpc Cancelar(SGDFE.Grpc.Message.RequisicaoCancelamento) returns(SGDFE.Grpc.Message.RespostaCancelamento);
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoAlterarConfiguracoesGerais {
+  uint64 cnpj = 1;
+
+  enum VersaoDocumento {
+    Mercurio = 0;
+  }
+
+  VersaoDocumento versao_documento = 2;
+  int32 fuso = 3;
+}

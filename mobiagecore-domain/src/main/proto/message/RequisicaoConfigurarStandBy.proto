@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoConfigurarStandBy {
+  uint64 cnpj = 1;
+  uint32 minutos_standby = 2;
+}

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "message/RequisicaoInstalacao.proto";
+import "message/RespostaInstalacao.proto";
+import "message/RequisicaoAlterarInformacoesEmpresa.proto";
+import "message/RespostaAlterarInformacoesEmpresa.proto";
+import "message/RequisicaoMudarAmbiente.proto";
+import "message/RespostaMudarAmbiente.proto";
+import "message/RequisicaoAlterarModoEmissao.proto";
+import "message/RespostaAlterarModoEmissao.proto";
+import "message/RequisicaoAlterarConfiguracoesGerais.proto";
+import "message/RespostaAlterarConfiguracoesGerais.proto";
+import "message/RequisicaoAtualizarCertificado.proto";
+import "message/RespostaAtualizarCertificado.proto";
+import "message/RequisicaoConfigurarStandBy.proto";
+import "message/RespostaConfigurarStandBy.proto";
+import "message/RequisicaoConsultarVencimentoCertificado.proto";
+import "message/RespostaConsultarVencimentoCertificado.proto";
+import "message/RequisicaoDescartarDocumentoEletronico.proto";
+import "message/RespostaDescartarDocumentoEletronico.proto";
+
+package SGDFE.Grpc.Service;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.service";
+
+service Configuracao {
+  rpc Instalar(SGDFE.Grpc.Message.RequisicaoInstalacao) returns(SGDFE.Grpc.Message.RespostaInstalacao);
+  rpc AlterarInformacoesEmpresa(SGDFE.Grpc.Message.RequisicaoAlterarInformacoesEmpresa) returns(SGDFE.Grpc.Message.RespostaAlterarInformacoesEmpresa);
+  rpc MudarAmbiente(SGDFE.Grpc.Message.RequisicaoMudarAmbiente) returns(SGDFE.Grpc.Message.RespostaMudarAmbiente);
+  rpc AlterarModoEmissao(SGDFE.Grpc.Message.RequisicaoAlterarModoEmissao) returns(SGDFE.Grpc.Message.RespostaAlterarModoEmissao);
+  rpc AlterarConfiguracoesGerais(SGDFE.Grpc.Message.RequisicaoAlterarConfiguracoesGerais) returns(SGDFE.Grpc.Message.RespostaAlterarConfiguracoesGerais);
+  rpc AtualizarCertificado(SGDFE.Grpc.Message.RequisicaoAtualizarCertificado) returns(SGDFE.Grpc.Message.RespostaAtualizarCertificado);;
+  rpc ConfigurarStandBy(SGDFE.Grpc.Message.RequisicaoConfigurarStandBy) returns(SGDFE.Grpc.Message.RespostaConfigurarStandBy);
+  rpc ConsultarVencimentoCertificado(SGDFE.Grpc.Message.RequisicaoConsultarVencimentoCertificado) returns(SGDFE.Grpc.Message.RespostaConsultarVencimentoCertificado);
+  rpc DescartarDocumentoEletronico(SGDFE.Grpc.Message.RequisicaoDescartarDocumentoEletronico) returns(SGDFE.Grpc.Message.RespostaDescartarDocumentoEletronico);
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "data/Erro.proto";
+import "data/Date.proto";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RespostaConsultarVencimentoCertificado {
+  SGDFE.Grpc.Data.Erro erro = 1;
+  SGDFE.Grpc.Data.Date vencimento_certificado = 2;
+}

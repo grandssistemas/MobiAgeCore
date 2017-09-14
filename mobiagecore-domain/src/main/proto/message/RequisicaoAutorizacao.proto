@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoAutorizacao {
+  uint64 cnpj = 1;
+  bytes xml = 2;
+  string csc = 3;
+  string id_token = 4;
+}

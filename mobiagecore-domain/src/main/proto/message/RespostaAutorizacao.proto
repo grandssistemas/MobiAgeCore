@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "data/Erro.proto";
+import "data/DateTime.proto";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RespostaAutorizacao {
+  enum SituacaoDocumento {
+    Registrado = 0;
+    Enviado    = 1;
+    Recebido   = 2;
+    Autorizado = 3;
+    Rejeitado  = 4;
+    Denegado   = 5;
+    Cancelado  = 6;
+    Pendente   = 7;
+  };
+
+  SGDFE.Grpc.Data.Erro erro = 1;
+  string motivo = 2;
+  uint32 codigo_status = 3;
+  SituacaoDocumento situacao_documento = 4;
+  string qrcode = 5;
+  SGDFE.Grpc.Data.DateTime data_autorizacao = 6;
+  uint64 numero_protocolo_autorizacao = 7;
+}

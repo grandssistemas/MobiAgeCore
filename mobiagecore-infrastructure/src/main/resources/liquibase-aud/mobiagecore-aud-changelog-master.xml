@@ -11,5 +11,4 @@
     <include file="MAC-AUD-v1.8.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-AUD-v1.10.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-AUD-v1.11.0-changelog.xml" relativeToChangelogFile="true"/>
-
 </databaseChangeLog>
