@@ -21,19 +21,31 @@ public class PasswordUtils {
     private static int keySize = 128;
     private static byte[] ivBytes;
     private static SecretKey secretKey;
+    private static String password = "22a48f692056962fa773b31e7d98466f9477e75fbec453cceab0585e95dc65f3";
+
+    static{
+        try {
+            salt = getSalt();
+            byte[] saltBytes = salt.getBytes();
+
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), saltBytes, iterations, keySize);
+            secretKey = skf.generateSecret(spec);
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            SecretKeySpec secretSpec = new SecretKeySpec(secretKey.getEncoded(), "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, secretSpec);
+            AlgorithmParameters params = cipher.getParameters();
+            ivBytes = params.getParameterSpec(IvParameterSpec.class).getIV();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static String encrypt(char[] plaintext) throws Exception {
-        salt = getSalt();
-        byte[] saltBytes = salt.getBytes();
-
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        PBEKeySpec spec = new PBEKeySpec(plaintext, saltBytes, iterations, keySize);
-        secretKey = skf.generateSecret(spec);
         SecretKeySpec secretSpec = new SecretKeySpec(secretKey.getEncoded(), "AES");
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretSpec);
-        AlgorithmParameters params = cipher.getParameters();
-        ivBytes = params.getParameterSpec(IvParameterSpec.class).getIV();
+
         byte[] encryptedTextBytes = cipher.doFinal(String.valueOf(plaintext).getBytes("UTF-8"));
 
         return DatatypeConverter.printBase64Binary(encryptedTextBytes);
