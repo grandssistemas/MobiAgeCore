@@ -233,6 +233,12 @@
                 <artifactId>financeclient</artifactId>
                 <version>${financeclient.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>br.com.sgsistemas.sgdfe.grpc</groupId>
+                <artifactId>sgdfe-grpc</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

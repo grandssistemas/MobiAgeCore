@@ -67,21 +67,21 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>3.3.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.protobuf</groupId>-->
+            <!--<artifactId>protobuf-java</artifactId>-->
+            <!--<version>3.3.0</version>-->
+        <!--</dependency>-->
 
     </dependencies>
     <build>
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.5.0.Final</version>
-            </extension>
-        </extensions>
+        <!--<extensions>-->
+            <!--<extension>-->
+                <!--<groupId>kr.motd.maven</groupId>-->
+                <!--<artifactId>os-maven-plugin</artifactId>-->
+                <!--<version>1.5.0.Final</version>-->
+            <!--</extension>-->
+        <!--</extensions>-->
         <plugins>
             <plugin>
                 <groupId>com.mysema.maven</groupId>
@@ -133,24 +133,24 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.5.0</version>
-                <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.4.0:exe:${os.detected.classifier}</pluginArtifact>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.xolstice.maven.plugins</groupId>-->
+                <!--<artifactId>protobuf-maven-plugin</artifactId>-->
+                <!--<version>0.5.0</version>-->
+                <!--<configuration>-->
+                    <!--<protocArtifact>com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}</protocArtifact>-->
+                    <!--<pluginId>grpc-java</pluginId>-->
+                    <!--<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.4.0:exe:${os.detected.classifier}</pluginArtifact>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                            <!--<goal>compile-custom</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
             <!--<plugin>-->
                 <!--<groupId>com.github.os72</groupId>-->
