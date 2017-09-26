@@ -12,5 +12,6 @@
     <include file="MAC-v1.9.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-v1.10.0-changelog.xml" relativeToChangelogFile="true"/>
     <include file="MAC-v1.11.0-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="MAC-v1.12.0-changelog.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
