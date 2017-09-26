@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoInstalacao {
+  uint64 cnpj = 1;
+  string razao_social = 2;
+  string uf = 3;
+  uint32 codigo_grupo = 4;
+  string nome_grupo = 5;
+  string token = 6;
+  int32 fuso = 7;
+  string nome_certificado = 8;
+  string senha_certificado = 9;
+  string email = 10;
+  bytes certificado = 11;
+}

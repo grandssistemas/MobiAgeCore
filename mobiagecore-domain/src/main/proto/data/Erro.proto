@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Data;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.data";
+
+enum CodigoErroGeral {
+  DESCONHECIDO = 0;
+  EMPRESA_NAO_CADASTRADA = 1;
+  MODELO_NOTA_INVALIDO = 2;
+  DOCUMENTO_JA_EXISTE = 3;
+  ERRO_NA_RECEITA = 4;
+  TIMEOUT_RESPOSTA_RECEITA = 5;
+  STANDBY_HABILITADO = 6;
+  EMPRESA_NAO_LIBRADA_NA_GETCARD = 7;
+  CERTIFICADO_INVALIDO = 8;
+  CERTIFICADO_VENCIDO = 9;
+  CERTIFICADO_NAO_ENCONTRADO = 10;
+  DOCUMENTO_NAO_EXISTE = 11;
+  SITUACAO_NAO_PERMITIDA = 12;
+  ERRO_INTERNO = 13;
+}
+
+enum CodigoErroAutorizacao {
+  MODO_EMISSAO_INCOMPATIVEL = 0;
+  AMBIENTE_INCOMPATIVEL = 1;
+  CSC_NAO_INFORMADO = 2;
+  IDTOKEN_NAO_INFORMADO = 3;
+  XML_INVALIDO = 4;
+}
+
+enum CodigoErroInutilizacao {
+  ANO_INVALIDO = 0;
+  SERIE_INVALIDA = 1;
+}
+
+enum CodigoErroInstalacao {
+  EMPRESA_JA_CADASTRADA = 0;
+}
+
+message Erro {
+  oneof codigo {
+    SGDFE.Grpc.Data.CodigoErroGeral codigo_geral = 1;
+    SGDFE.Grpc.Data.CodigoErroAutorizacao codigo_autorizacao = 2;
+    SGDFE.Grpc.Data.CodigoErroInutilizacao codigo_inutilizacao = 3;
+    SGDFE.Grpc.Data.CodigoErroInstalacao codigo_instalacao = 4;
+  }
+
+  string mensagem = 5;
+  map<string, string> argumentos = 6;
+}

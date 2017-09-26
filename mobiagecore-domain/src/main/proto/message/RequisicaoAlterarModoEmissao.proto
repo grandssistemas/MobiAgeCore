@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoAlterarModoEmissao {
+  uint64 cnpj = 1;
+
+  enum ModoEmissao {
+    Normal = 0;
+    Scan = 1;
+    Dpec = 2;
+    Fsda = 3;
+    Fs = 4;
+    SVCAN = 5;
+    SVCRS = 6;
+  };
+
+  ModoEmissao modo_emissao = 2;
+}

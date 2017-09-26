@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "data/Date.proto";
+import "data/Time.proto";
+
+package SGDFE.Grpc.Data;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.data";
+
+message DateTime {
+  SGDFE.Grpc.Data.Date date = 1;
+  SGDFE.Grpc.Data.Time time = 2;
+  int32 offset_from_utc = 3;
+}

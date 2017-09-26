@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "data/Erro.proto";
+import "data/DateTime.proto";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RespostaCancelamento {
+  SGDFE.Grpc.Data.Erro erro = 1;
+  string motivo = 2;
+  uint32 codigo_status = 3;
+  uint64 numero_protocolo_cancelamento = 4;
+  SGDFE.Grpc.Data.DateTime data_cancelamento = 5;
+}

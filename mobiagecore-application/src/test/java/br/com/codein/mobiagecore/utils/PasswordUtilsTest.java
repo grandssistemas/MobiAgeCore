@@ -11,14 +11,15 @@ public class PasswordUtilsTest extends AbstractTest {
 
     @Test
     public void testDescrypt() {
-        String pass = "SenhaParaTeste";
+        String pass = "SenhaParaTeste$%";
+        String p2 = "Ap6cyHYExECgSJwYeDO+eOXgWiIdqNSdBZdBXvtBb5c=";
         try {
             String passToDescrypt = PasswordUtils.encrypt(pass.toCharArray());
             String passDescrypt = PasswordUtils.decrypt(passToDescrypt.toCharArray());
             assertEquals(pass, passDescrypt);
+            assertEquals(p2,passToDescrypt);
         } catch (Exception e) {
             fail();
         }
     }
-
 }

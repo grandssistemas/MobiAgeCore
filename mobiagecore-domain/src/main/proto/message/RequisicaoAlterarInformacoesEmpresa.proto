@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoAlterarInformacoesEmpresa {
+  uint64 cnpj = 1;
+  string email = 2;
+  string razao_social = 3;
+}

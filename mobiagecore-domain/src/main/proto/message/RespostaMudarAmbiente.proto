@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "data/Erro.proto";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RespostaMudarAmbiente {
+  SGDFE.Grpc.Data.Erro erro = 1;
+}

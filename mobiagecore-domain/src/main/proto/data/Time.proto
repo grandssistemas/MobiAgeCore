@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Data;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.data";
+
+message Time {
+  uint32 hour = 1;
+  uint32 minute = 2;
+  uint32 second = 3;
+  uint32 millisecond = 4;
+}

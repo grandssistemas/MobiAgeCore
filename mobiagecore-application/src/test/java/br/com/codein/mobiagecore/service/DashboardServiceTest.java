@@ -4,6 +4,7 @@ import br.com.codein.mobiagecore.AbstractTest;
 import br.com.codein.mobiagecore.application.service.dashboard.DashboardService;
 import br.com.codein.mobiagecore.domain.model.dashboard.Dashboard;
 import br.com.codein.mobiagecore.domain.model.dashboard.enums.DashboardType;
+import io.grpc.ManagedChannel;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

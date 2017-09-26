@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package SGDFE.Grpc.Message;
+
+option java_package = "br.com.sgsistemas.sgdfe.grpc.message";
+
+message RequisicaoCancelamento {
+  uint64 cnpj = 1;
+  string chave = 2;
+  string justificativa = 3;
+}
