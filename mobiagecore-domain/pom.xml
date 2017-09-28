@@ -44,11 +44,6 @@
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.0</version>
         </dependency>
-        <dependency>
-            <groupId>bouncycastle</groupId>
-            <artifactId>bcprov-jdk14</artifactId>
-            <version>140</version>
-        </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
