@@ -1,10 +1,13 @@
 package br.com.codein.mobiagecore.api.genericreport;
 
+import br.com.codein.mobiagecore.application.service.genericreport.GenericReportService;
 import br.com.codein.mobiagecore.domain.model.genericreport.GenericReport;
+import br.com.codein.mobiagecore.domain.model.genericreport.enums.ReportType;
 import br.com.codein.mobiagecore.gateway.dto.ReportTypeDTO;
 import io.gumga.application.GumgaService;
 import io.gumga.presentation.GumgaAPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +22,12 @@ import java.util.List;
 @RequestMapping("/api/genericreport")
 public class GenericReportAPI extends GumgaAPI<GenericReport, Long> {
 
+    private GenericReportService genericReportService;
+
     @Autowired
-    public GenericReportAPI(GumgaService<GenericReport, Long> service) {
+    public GenericReportAPI(GenericReportService service) {
         super(service);
+        this.genericReportService = service;
     }
 
     @RequestMapping(value = "/getreporttype", method = RequestMethod.GET)
@@ -34,4 +40,11 @@ public class GenericReportAPI extends GumgaAPI<GenericReport, Long> {
         }
         return reportTypeDTOS;
     }
+
+    @RequestMapping(value = "/getdefault/{type}", method = RequestMethod.GET)
+    public GenericReport getDefault(@PathVariable ReportType type) {
+        return this.genericReportService.getDefaultReport(type);
+    }
+
+
 }

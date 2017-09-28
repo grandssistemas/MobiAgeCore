@@ -27,6 +27,8 @@ public class GenericReport extends GumgaModel<Long> {
     private ReportType reportType;
     @ApiModelProperty(value = "Nome do relatorio salvo")
     private String name;
+    @ApiModelProperty(value = "Flag que indica se esse é o relatório padrão para esse tipo.")
+    private Boolean isDefault = Boolean.FALSE;
 
     public GenericReport() {
     }
@@ -59,6 +61,14 @@ public class GenericReport extends GumgaModel<Long> {
 
     public void setReportType(ReportType reportType) {
         this.reportType = reportType;
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean aDefault) {
+        isDefault = aDefault;
     }
 }
 

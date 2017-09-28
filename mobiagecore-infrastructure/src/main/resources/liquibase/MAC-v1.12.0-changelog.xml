@@ -2,4 +2,16 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="Luiz Augusto" id="MAC-15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="genericreport" columnName="isdefault"/>
+            </not>
+        </preConditions>
+
+        <addColumn tableName="genericreport">
+            <column name="isdefault" type="boolean" defaultValueBoolean="false"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
