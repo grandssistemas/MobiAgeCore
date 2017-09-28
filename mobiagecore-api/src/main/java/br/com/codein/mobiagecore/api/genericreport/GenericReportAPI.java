@@ -41,7 +41,7 @@ public class GenericReportAPI extends GumgaAPI<GenericReport, Long> {
         return reportTypeDTOS;
     }
 
-    @RequestMapping(value = "/getdefault/:type", method = RequestMethod.GET)
+    @RequestMapping(value = "/getdefault/{type}", method = RequestMethod.GET)
     public GenericReport getDefault(@PathVariable ReportType type) {
         return this.genericReportService.getDefaultReport(type);
     }
