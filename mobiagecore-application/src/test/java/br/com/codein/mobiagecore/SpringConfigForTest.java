@@ -59,7 +59,7 @@ public class SpringConfigForTest {
         properties.put("hibernate.hbm2ddl.auto", "create");
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.EJB3NamingStrategy");
-        properties.put("hibernate.show_sql", "false");
+        properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.connection.charSet", "UTF-8");
         properties.put("hibernate.connection.characterEncoding", "UTF-8");
         properties.put("hibernate.connection.useUnicode", "true");
