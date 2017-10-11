@@ -20,4 +20,10 @@ public class ConfigAPI  {
     public Map getConfig() {
         return applicationConf.returnConfig("fashionmanager.properties");
     }
+
+
+    @RequestMapping(value = "/zendesk", method = RequestMethod.GET)
+    public String getZenDeskConfig(){
+        return applicationConf.getZendeskConfig();
+    }
 }

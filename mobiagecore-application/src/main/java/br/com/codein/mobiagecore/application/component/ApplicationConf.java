@@ -4,12 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 /**
  * Created by gelatti on 10/05/17.
@@ -39,6 +38,18 @@ public class ApplicationConf {
         return map;
     }
 
+    public String getZendeskConfig() {
+
+        String result = "";
+        try {
+            InputStream input = new FileInputStream(System.getProperty("user.home") + "/gumgafiles/zendesk.html");
+            result = new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            LOG.info("Não foi encontrado nenhum arquivo de configuração do Zendesk.", e);
+        }
+
+        return result;
+    }
 }
 
 
