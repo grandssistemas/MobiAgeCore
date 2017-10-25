@@ -41,7 +41,7 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
         Map map = storageClient.uploadSharedImage(file, key).getBody();
         StorageFile sf = new StorageFile();
         sf.setUrl(String.valueOf(((Map)map.get("object")).get("localizacaoStorage")));
-        sf.setIdStorage(Long.valueOf(String.valueOf(((Map)map.get("object")).get("id"))));
+        sf.setIdStorage(String.valueOf(((Map)map.get("object")).get("id")));
         sf.setType(ImageType.PRIMARY);
         save(sf);
         return sf;
@@ -53,7 +53,7 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
         if (!((Map)map.get("file")).isEmpty()) {
             StorageFile sf = new StorageFile();
             sf.setUrl(String.valueOf(((Map) map.get("file")).get("hash")));
-            sf.setIdStorage(Long.valueOf(String.valueOf(((Map) map.get("file")).get("id"))));
+            sf.setIdStorage(String.valueOf(((Map) map.get("file")).get("id")));
             save(sf);
             return sf;
         } else {
@@ -66,7 +66,7 @@ public class StorageFileService extends GumgaService<StorageFile, Long> {
         Map map = storageClient.uploadSharedImage(file, key).getBody();
         StorageFile sf = new StorageFile();
         sf.setUrl(String.valueOf(((Map)map.get("object")).get("localizacaoStorage")));
-        sf.setIdStorage(Long.valueOf(String.valueOf(((Map)map.get("object")).get("id"))));
+        sf.setIdStorage(String.valueOf(((Map)map.get("object")).get("id")));
         sf.setType(ImageType.PRIMARY);
         sf.setIntegrationId(integrationId);
         save(sf);
